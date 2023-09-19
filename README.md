@@ -132,7 +132,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 add a new cluster issuer and DNS API Token:
 
-> Somehow avoid pushing the secret onto GitHub haha (or even letting the API Token lie around on your system, could be bad enough) until then I'm just going to add `*secret.yml` to our `.gitignore` file.
+> Somehow avoid pushing the secret onto GitHub haha (or even letting the API Token lie around on your system, could be bad enough) until then I'm just going to add `*secret.yml` to our `.gitignore` file. Btw running `gitleaks detect` on your repo is a great idea :).
 
 Here is an example secret, create one of these and apply it (using a different token):  
 

@@ -168,3 +168,4 @@ The `whoami` page should now be available using the specified domain, and it sho
 - argocd 
 - kustomize 
 - cilium 
+  - hubble

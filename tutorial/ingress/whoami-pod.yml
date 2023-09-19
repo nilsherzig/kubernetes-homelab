@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: whoami
+  namespace: whoami
+  labels:
+    app.kubernetes.io/name: whoami-pod
+spec:
+  containers:
+    - name: whoami
+      image: containous/whoami
+      ports:
+        - containerPort: 80

@@ -18,6 +18,7 @@
       - [Service](#service)
       - [Ingress path](#ingress-path)
     - [Adding TLS / SSL Certificates to our ingress](#adding-tls-ssl-certificates-to-our-ingress)
+  - [ROADMAP](#roadmap)
 <!--toc:end-->
 
 ## PLEASE READ
@@ -161,3 +162,9 @@ kubectl apply -f ./tutorial/certmanger/cm-ingress.yml
 ```
 
 The `whoami` page should now be available using the specified domain, and it should use a valid TLS certificate 🎉.
+
+## ROADMAP 
+
+- argocd 
+- kustomize 
+- cilium 

@@ -18,8 +18,6 @@
       - [Service](#service)
       - [Ingress path](#ingress-path)
     - [Adding TLS / SSL Certificates to our ingress](#adding-tls-ssl-certificates-to-our-ingress)
-  - [`ArgoCD`](#argocd)
-  - [`Kustomize`](#kustomize)
 <!--toc:end-->
 
 ## PLEASE READ
@@ -122,6 +120,8 @@ curl -s http://[hostname]/testpath | head -n 3
 
 ### Adding TLS / SSL Certificates to our ingress
 
+https://cert-manager.io/docs/troubleshooting/acme/ <- good source on how to debug acme / let's encrypt
+
 We will use cert manager to automatically request TLS certificates from let's encrypt.
 
 Install cert manager: 
@@ -153,3 +153,11 @@ Please also change the Cloudflare & acme email address.
 ```bash
 kubectl apply -f ./tutorial/certmanger/cm-cert.yml
 ```
+
+Also change the domain in this file 
+
+```bash
+kubectl apply -f ./tutorial/certmanger/cm-ingress.yml
+```
+
+The `whoami` page should now be available using the specified domain, and it should use a valid TLS certificate 🎉.

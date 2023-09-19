@@ -29,6 +29,8 @@ I aim to follow most industry standards for a Kubernetes environment - or what I
 
 Please keep in mind, that this is currently very much work in progress. I will add some colors (🍎🧡💚) next to sections (don't trust anything but 💚). I will add a static site generator at some point in the future.
 
+Furthermore, I will try to keep the main branch `stable` and commit things that are work in progress / i don't understand jet, but I'm working on onto the `unstable` branch and merge them after cleanup.
+
 ## Setup 
 
 ### install k3s
@@ -169,3 +171,4 @@ The `whoami` page should now be available using the specified domain, and it sho
 - kustomize 
 - cilium 
   - hubble
+

@@ -7,6 +7,7 @@
 <!--toc:start-->
 - [Kubernetes `Homelab`](#kubernetes-homelab)
   - [Table of contents](#table-of-contents)
+  - [🔴 ye I am going to replace all of this with argocd](#🔴-ye-i-am-going-to-replace-all-of-this-with-argocd)
   - [PLEASE READ](#please-read)
   - [Setup](#setup)
     - [install k3s](#install-k3s)
@@ -18,8 +19,12 @@
       - [Service](#service)
       - [Ingress path](#ingress-path)
     - [Adding TLS / SSL Certificates to our ingress](#adding-tls-ssl-certificates-to-our-ingress)
-  - [ROADMAP](#roadmap)
+  - [Argo CD](#argo-cd)
 <!--toc:end-->
+
+## 🔴 ye I am going to replace all of this with argocd 
+
+It's just not feasible to keep docs on every way of doing something.
 
 ## PLEASE READ
 
@@ -165,10 +170,30 @@ kubectl apply -f ./tutorial/certmanger/cm-ingress.yml
 
 The `whoami` page should now be available using the specified domain, and it should use a valid TLS certificate 🎉.
 
+## Argo CD 
+
+TODO maybe install this first and manage everything else, even the initial tutorial, through it? 
+
+https://argo-cd.readthedocs.io/en/stable/getting_started/
+
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+Login:  
+
+
+username: Admin
+to get the default password run: 
+
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+`
+
 ## ROADMAP 
 
 - argocd 
 - kustomize 
 - cilium 
   - hubble
-

@@ -12,14 +12,17 @@ To maintain stability, we aim to keep the `main` branch stable. Any work in prog
 
 ## Table of contents
 
-⮬ If you're reading this on GitHub you can also use 🍔 menu on the top left.
+⮬ If you're reading this on GitHub you can use the 🍔 menu on the top left.
 
 ## Setup 
 
-### Overview 
+### Tools / Software we will use 
 
-- `K3s`: Lightweight Kubernetes distribution, K3s is a lightweight Kubernetes distribution that is easy to install and requires minimal resources, making it ideal for running Kubernetes on edge devices or low-powered hardware.
 - `ArgoCD`: ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes.
+- `Cert Manager`: Cert-manager is a native Kubernetes certificate management controller. It can help with issuing certificates from a variety of sources, such as Let’s Encrypt, HashiCorp Vault, Venafi, a simple signing key pair, or self-signed.
+- `K3s`: Lightweight Kubernetes distribution, K3s is a lightweight Kubernetes distribution that is easy to install and requires minimal resources, making it ideal for running Kubernetes on edge devices or low-powered hardware.
+- `k9s`: k9s is a terminal UI to interact with your Kubernetes clusters. The aim of this project is to make it easier to navigate, observe and manage your applications in the wild. K9s continually watches Kubernetes for changes and offers subsequent commands to interact with observed Kubernetes resources.
+- `kubectl`: The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
 - `Sealed Secrets`: Sealed Secrets is a Kubernetes controller and tool for one-way encrypted Secrets. It works by encrypting a Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
 ### Install k3s

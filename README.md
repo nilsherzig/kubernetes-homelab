@@ -1,36 +1,5 @@
 # Kubernetes Homelab
 
-## Table of contents
-
-⮬ If you're reading this on GitHub you can also use 🍔 menu on the top left.
-
-<!--toc:start-->
-- [Kubernetes Homelab](#kubernetes-homelab)
-  - [Table of contents](#table-of-contents)
-  - [🔴 ye I am going to replace all of this with ArgoCD](#-ye-i-am-going-to-replace-all-of-this-with-argocd)
-  - [PLEASE READ](#please-read)
-- [Kubernetes Homelab](#kubernetes-homelab-1)
-  - [Work in Progress](#work-in-progress)
-  - [Setup](#setup)
-    - [Overview](#overview)
-    - [Install k3s](#install-k3s)
-      - [If you're using NixOS:](#if-youre-using-nixos)
-      - [Every other Linux distribution:](#every-other-linux-distribution)
-    - [Install ArgoCD](#install-argocd)
-    - [Use Sealed Secrets to provide a Cloudflare DNS Token to your Cluster](#use-sealed-secrets-to-provide-a-cloudflare-dns-token-to-your-cluster)
-    - [Configure Cert Manager](#configure-cert-manager)
-    - [Use ArgoCD to bootstrap a basic cluster](#use-argocd-to-bootstrap-a-basic-cluster)
-<!--toc:end-->
-
-## 🔴 ye I am going to replace all of this with ArgoCD
-
-It's just not feasible to keep docs on every way of doing something.
-
-## PLEASE READ
-
-
-# Kubernetes Homelab
-
 Welcome to the Kubernetes Homelab repository! Here, my friend and I plan to document our journey of self-hosting a couple of services using Kubernetes. We will be writing tutorials and blog posts about everything we do, and we aim to make it accessible to everyone, regardless of their existing knowledge of Kubernetes.
 
 We strive to follow industry standards for a Kubernetes environment, but please note that this is not a recommended way to run a simple container in your home network. 
@@ -40,6 +9,10 @@ We strive to follow industry standards for a Kubernetes environment, but please 
 Please keep in mind that this repository is currently a work in progress. We will be adding colors (🍎🧡💚) next to sections to indicate their status (only 💚 sections are trustworthy). We also plan to add a static site generator at some point in the future.
 
 To maintain stability, we aim to keep the `main` branch stable. Any work in progress or incomplete changes will be committed to the `unstable` branch. 
+
+## Table of contents
+
+⮬ If you're reading this on GitHub you can also use 🍔 menu on the top left.
 
 ## Setup 
 

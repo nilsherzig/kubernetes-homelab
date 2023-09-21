@@ -8,25 +8,33 @@ metadata:
 spec:
   containers:
     - name: sidecar-main
-      image: alpine
-      command: "sh"
-      args:
-        [
-          "-c",
-          "apk add --no-cache curl && curl https://am.i.mullvad.net/connected",
-        ]
-      restartPolicy: OnFailure
+      image: nicolaka/netshoot
+      command: ["tail"]
+      args: ["-f", "/dev/null"]
+    - name: qbitttorrent
+      image: lscr.io/linuxserver/qbittorrent:latest
+      env:
+        - name: PUID
+          value: "1000"
+        - name: PGUI
+          value: "1000"
+        - name: TZ
+          value: "Europe/Berlin"
+        - name: WEBUI_PORT
+          value: "8080"
+      ports:
+        - containerPort: 8080
     - name: wireguard
       image: ghcr.io/linuxserver/wireguard
       imagePullPolicy: IfNotPresent
       securityContext:
-      privileged: true
-      capabilities:
-        add:
-          - NET_ADMIN
-          - SYS_MODULE
-      allowPrivilegeEscalation: true
-      readOnlyRootFilesystem: false
+        privileged: true
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+        allowPrivilegeEscalation: true
+        readOnlyRootFilesystem: false
       volumeMounts:
         # - mountPath: /config
         #   name: wireguard

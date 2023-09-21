@@ -10,6 +10,8 @@ spec:
     - image: jellyfin/jellyfin
       name: test-container
       volumeMounts:
+        # TODO i think the problem with mounts like this is, that you cant change them via apply
+        # i currently have to delete the whole pod and recreate it
         - name: test-volume
           mountPath: /media/shows
           subPath: shows/

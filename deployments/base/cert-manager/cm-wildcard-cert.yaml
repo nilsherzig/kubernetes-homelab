@@ -1,0 +1,16 @@
+# im kinda confused on this one atm, but i think it would be nice to use a wildcard cert TODO
+# problems because of namespace?
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tls-secret
+  namespace: cert-manager
+spec:
+  secretName: tls-secret
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  commonName: "*.nilsherzig.com"
+  dnsNames:
+    - "*.nilsherzig.com"

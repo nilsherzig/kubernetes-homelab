@@ -71,7 +71,7 @@ Change all email addresses and domains in `./deployments/base/cert-manager/` to 
 
 ### Use ArgoCD to bootstrap a basic cluster
 
-Run gitleaks to check if you have any secrets in your repository:
+Run `gitleaks detect` to check if you have any secrets in your repository:
 
 Push your changes to a git repository and change the `repoURL` in `./argo/base.yaml` to your repository.
 
@@ -84,7 +84,7 @@ kubectl port-forward svc/argocd-server -n argocd 9090:443
 Apply your Argo application:
 
 ```bash
-kubectl apply -f argo/base.yaml
+kubectl apply -f argo # this will apply all files in the argo directory
 ```
 
 Open the ArgoCD web interface at https://localhost:9090 and login using the default credentials:

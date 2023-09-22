@@ -5,7 +5,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: tls-secret
-  namespace: cert-manager
+  namespace: argocd
 spec:
   secretName: tls-secret
   issuerRef:

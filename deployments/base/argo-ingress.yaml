@@ -23,5 +23,4 @@ spec:
           port: 80
           scheme: h2c
   tls:
-    namespace: cert-manager
     secretName: tls-secret

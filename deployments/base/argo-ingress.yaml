@@ -25,4 +25,4 @@ spec:
   tls:
     - hosts:
         - argocd.nilsherzig.com
-      secretName: argocd-tls
+      secretName: argo-tls

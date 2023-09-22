@@ -23,4 +23,5 @@ spec:
           port: 80
           scheme: h2c
   tls:
-    certResolver: letsencrypt-prod
+    namespace: cert-manager
+    certResolver: tls-secret

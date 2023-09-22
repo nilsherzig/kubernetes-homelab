@@ -23,6 +23,4 @@ spec:
           port: 80
           scheme: h2c
   tls:
-    - hosts:
-        - argocd.nilsherzig.com
-      secretName: argo-tls
+    certResolver: default

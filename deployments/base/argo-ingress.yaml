@@ -24,4 +24,4 @@ spec:
           scheme: h2c
   tls:
     namespace: cert-manager
-    certResolver: tls-secret
+    secretName: tls-secret

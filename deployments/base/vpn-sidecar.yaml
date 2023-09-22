@@ -36,8 +36,6 @@ spec:
         allowPrivilegeEscalation: true
         readOnlyRootFilesystem: false
       volumeMounts:
-        # - mountPath: /config
-        #   name: wireguard
         - name: test-volume
           mountPath: /config
           subPath: configs/wireguard/

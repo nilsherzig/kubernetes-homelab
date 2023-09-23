@@ -13,6 +13,14 @@ spec:
       args: ["-f", "/dev/null"]
     - name: qbitttorrent
       image: lscr.io/linuxserver/qbittorrent:latest
+      command: ["bash"]
+      args:
+        [
+          "-c",
+          "echo 'WebUI \\HostHeaderValidation=false'",
+          ">>",
+          "/root/config/qBittorrent/qBittorrent.conf",
+        ]
       env:
         - name: PUID
           value: "1000"

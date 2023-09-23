@@ -5,6 +5,7 @@ services:
     image: strm/dnsmasq
     volumes:
       - ./dnsmasq.conf:/etc/dnsmasq.conf
+      - ./hosts:/etc/hosts
     cap_add:
       - NET_ADMIN
     network_mode: host

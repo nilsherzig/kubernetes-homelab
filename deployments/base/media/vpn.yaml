@@ -114,7 +114,7 @@ metadata:
   name: sidecar-test
   namespace: random-workloads
   labels:
-    app.kubernetes.io/name: sidecar-test
+    app.kubernetes.io/name: qbittorrent-pod
 spec:
   containers:
     - name: sidecar-main
@@ -172,3 +172,40 @@ spec:
         server: desktop
         path: /bigdata/media/
         readOnly: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qbittorrent-service
+  namespace: random-workloads
+spec:
+  selector:
+    app.kubernetes.io/name: qbittorrent-pod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbittorrent-tls
+  namespace: random-workloads
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: qbittorrent.nilsherzig.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: qbittorrent-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - qbittorrent.nilsherzig.com
+      secretName: tls-qbittorrent

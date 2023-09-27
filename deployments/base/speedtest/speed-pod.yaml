@@ -8,6 +8,6 @@ metadata:
 spec:
   containers:
     - name: speedtest
-      image: openspeedtest/latest
+      image: containous/whoami
       ports:
         - containerPort: 3000

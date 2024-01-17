@@ -25,6 +25,37 @@ To maintain stability, we aim to keep the `main` branch stable. Any work in prog
 - `kubectl`: The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
 - `Sealed Secrets`: Sealed Secrets is a Kubernetes controller and tool for one-way encrypted Secrets. It works by encrypting a Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
+## Setup on bare metal server running CentOS (or Fedora, or RHEL)
+```bash
+sudo dnf update                                       # update packages
+
+sudo dnf copr enable varlad/helix                     # add helix editor repo
+sudo dnf install helix                                # install helix editor
+
+sudo dnf install cockpit                              # install a webinterface on 9090 
+sudo systemctl enable --now cockpit
+sed -i 's/root/#root/' /etc/cockpit/disallowed-users
+
+sudo dnf install dnf-automatic                        # install a script which will update dnf for you
+sed -i 's/apply_updates = no/apply_updates = yes/' \ 
+/etc/dnf/automatic.conf                               # activate auto apply (not just downloads)
+sudo systemctl enable --now dnf-automatic.timer       # start script
+
+curl -sfL https://get.k3s.io | sh -i                  # install k3s
+
+REMOTE="176.9.10.144"                                 # set remote host ip / fqdn
+scp root@$REMOTE:/etc/rancher/k3s/k3s.yaml .          # copy k3s kubeconfig to local host
+sudo chown $UID:$GID ./k3s.yaml                       # change kubeconfig ownership to your user
+sed -i "s/127.0.0.1/$REMOTE/" ./k3s.yaml              # change the clusterapi ip / domain to your remote host
+KUBECONFIG=./k3s.yaml kubectl get nodes               # test if everything is working (should return your node)
+
+export KUBECONFIG=~/.kube/config:./k3s.yaml
+kubectl config view --flatten > /tmp/config
+cp ~/.kube/config ~/.kube/config.bak
+cp /tmp/config ~/.kube/config
+export KUBECONFIG=~/.kube/config
+```
+
 ### Install k3s
 
 #### If you're using NixOS:
@@ -40,6 +71,11 @@ https://docs.k3s.io/quick-start
 ### Install ArgoCD
 
 https://argo-cd.readthedocs.io/en/stable/getting_started/
+
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
 
 ### Use Sealed Secrets to provide a Cloudflare DNS Token to your Cluster
 

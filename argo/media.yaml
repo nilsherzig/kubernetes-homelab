@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: work
+  name: media
   namespace: argocd
 spec:
   project: default
@@ -14,7 +14,7 @@ spec:
       jsonnet: {}
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: work 
+    namespace: work
   syncPolicy:
     automated:
       prune: true

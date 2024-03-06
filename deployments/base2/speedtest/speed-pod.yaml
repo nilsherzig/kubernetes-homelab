@@ -4,7 +4,6 @@ metadata:
   name: speedtest-pod
   labels:
     name: speedtest-pod
-    test: hi
 spec:
   containers:
     - name: speedtest

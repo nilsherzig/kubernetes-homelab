@@ -3,9 +3,9 @@ kind: Kustomization
 namespace: prod
 resources:
   - ../../base2/speedtest/
-  - ../../base2/ollama/
+  # - ../../base2/ollama/
 namePrefix: prod-
 # not really needed, since the original files should (?) be the prod version
 patches:
   # ollama patches
-  - path: ./ollama_add_gpu.yaml
+  # - path: ./ollama_add_gpu.yaml

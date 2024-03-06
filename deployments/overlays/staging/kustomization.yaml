@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: staging
 resources:
   - ../../base2/speedtest/
+  - ../../base2/ollama/
 namePrefix: staging-
 patches:
   # speedtest patches

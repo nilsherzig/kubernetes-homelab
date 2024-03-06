@@ -13,7 +13,7 @@ spec:
         run: my-nginx
     spec:
       containers:
-      - name: my-nginx
-        image: nginx
-        ports:
-        - containerPort: 80
+        - name: my-nginx
+          image: openspeedtest/latest
+          ports:
+            - containerPort: 3000

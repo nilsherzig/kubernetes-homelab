@@ -17,21 +17,22 @@ kubectl create secret generic cloudflare-api-token-secret --dry-run=client --fro
 
 kubectl apply -f ./apps/base.yaml
 
-# check if prod or staging cluster
-read -rp "Prod? (y/n) " choice
-
-case "$choice" in 
-  y|Y ) 
-    echo "Proceeding to setup a prod cluster..."
-    kubectl apply -f ./apps/homelab-prod.yaml
-    ;;
-  n|N )
-    echo "Proceeding to setup a staging cluster..."
-    kubectl apply -f ./apps/homelab-staging.yaml
-    ;;
-  * ) 
-    echo "Invalid input. Please enter y or n."
-    exit 1
-    ;;
-esac
-
+while true; do
+  read -rp "Prod? (y/n) " choice
+  
+  case "$choice" in 
+    y|Y ) 
+      echo "Proceeding to setup a prod cluster..."
+      kubectl apply -f ./apps/homelab-prod.yaml
+      break
+      ;;
+    n|N )
+      echo "Proceeding to setup a staging cluster..."
+      kubectl apply -f ./apps/homelab-staging.yaml
+      break  
+      ;;
+    * ) 
+      echo "Invalid input. Please enter y or n."
+      ;;
+  esac
+done

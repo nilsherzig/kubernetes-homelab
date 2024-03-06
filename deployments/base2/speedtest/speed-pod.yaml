@@ -4,7 +4,6 @@ metadata:
   name: speedtest-pod
   labels:
     name: speedtest-pod
-    testing: a-change-on-the-dev-branch
 spec:
   containers:
     - name: speedtest

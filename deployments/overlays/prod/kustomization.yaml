@@ -1,9 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: prod
+# namespace: prod
 resources:
   - ../../base2/speedtest/
   # - ../../base2/ollama/
+  - ../../base2/argo/
 namePrefix: prod-
 # not really needed, since the original files should (?) be the prod version
 patches:

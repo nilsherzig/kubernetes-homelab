@@ -8,14 +8,25 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 # install sealed secrets and set cloudflare dns api token
 kubectl apply -f ./apps/sealed_secrets.yaml
-read -rp "Enter your cloudflare dns token: " cloudflaretoken 
-kubectl create secret generic cloudflare-api-token-secret --dry-run=client --from-literal=api-token="$cloudflaretoken" -o yaml | \
-    kubeseal \
-      --controller-name=sealed-secrets-controller \
-      --controller-namespace=kubeseal \
-      --format yaml | kubectl apply -f -
-
 kubectl apply -f ./apps/base.yaml
+
+read -rp "Enter your cloudflare dns token: " cloudflaretoken 
+# kubectl create secret generic cloudflare-api-token-secret --dry-run=client --from-literal=api-token="$cloudflaretoken" -o yaml | \
+#     kubeseal \
+#       --controller-name=sealed-secrets-controller \
+#       --controller-namespace=kubeseal \
+#       --format yaml | kubectl apply -f -
+
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-api-token-secret
+  namespace: cert-manager
+type: Opaque
+stringData:
+  api-token: "$cloudflaretoken"
+EOF
 
 while true; do
   read -rp "Prod? (y/n) " choice

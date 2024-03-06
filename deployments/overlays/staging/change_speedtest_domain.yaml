@@ -12,6 +12,8 @@ spec:
             backend:
               service:
                 name: speedtest-service
+                port:
+                  number: 80
   tls:
     - hosts:
         - staging.speed.nilsherzig.com

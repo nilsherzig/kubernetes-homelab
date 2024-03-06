@@ -1,5 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: staging
 resources:
-  - ../../base2/
-patchesStrategicMerge:
-  - increase_replicas.yaml
-namePrefix: "staging-"
+  - ../../base2/speedtest
+namePrefix: staging-
+patches:
+  - path: ./change_speedtest_domain.yaml
+  - path: ./change_speedtest_service_selector.yaml
+  - path: ./change_speedtest_pod_label.yaml

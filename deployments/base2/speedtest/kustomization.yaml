@@ -1,0 +1,4 @@
+resources:
+  - ./speed-pod.yaml
+  - ./speed-service.yaml
+  - ./speed-tls-ingress.yaml

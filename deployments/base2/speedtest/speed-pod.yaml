@@ -2,9 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: speedtest-pod
-  namespace: random-workloads
   labels:
-    app.kubernetes.io/name: speedtest-pod
+    name: speedtest-pod
 spec:
   containers:
     - name: speedtest

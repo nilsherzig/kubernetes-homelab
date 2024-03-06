@@ -1,20 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: media
-  namespace: argocd
+  name: homelab-staging
 spec:
   project: default
-  source:
-    repoURL: "git@github.com:nilsherzig/kubernetes-deployments.git"
-    path: deployments/
-    targetRevision: prod
-    directory:
-      recurse: true
-      jsonnet: {}
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: work
+    namespace: staging
+  source:
+    repoURL: https://github.com/nilsherzig/kubernetes-homelab.git
+    targetRevision: HEAD
+    path: ../overlays/staging
   syncPolicy:
     automated:
       prune: true

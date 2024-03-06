@@ -4,6 +4,7 @@ metadata:
   name: speedtest-pod
   labels:
     name: speedtest-pod
+    testing: this is a change only applied to non prod clusters
 spec:
   containers:
     - name: speedtest

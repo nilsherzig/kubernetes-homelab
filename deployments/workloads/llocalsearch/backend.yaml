@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: nilsherzig/llocalsearch-backend:latest
+          env:
+            - name: OLLAMA_HOST
+              value: "http://ollama.staging.svc.cluster.local"
+            - name: CHROMA_DB_URL
+              value: "http://chromadb.staging.svc.cluster.local:8000"
+            - name: SEARXNG_DOMAIN
+              value: "http://searxng.staging.svc.cluster.local:8080"
+            - name: EMBEDDINGS_MODEL_NAME
+              value: "nomic-embed-text:v1.5"
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

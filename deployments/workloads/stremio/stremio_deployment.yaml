@@ -1,0 +1,74 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stremio-deployment
+  labels:
+    app: stremio-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stremio
+  template:
+    metadata:
+      labels:
+        app: stremio
+    spec:
+      securityContext:
+        fsGroup: 0
+      containers:
+        - name: wireguard
+          image: alpine:latest
+          imagePullPolicy: IfNotPresent
+          command: ["sh"]
+          args:
+            [
+              "-c",
+              "apk add curl wireguard-tools-wg-quick iptables ip6tables && wg-quick up wg0 && tail -f /dev/null",
+            ]
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - NET_ADMIN
+                - SYS_MODULE
+            allowPrivilegeEscalation: true
+            readOnlyRootFilesystem: false
+          volumeMounts:
+            - name: wireguard
+              mountPath: /etc/wireguard/wg0.conf
+              subPath: wg0.conf
+
+        - name: stremio
+          image: stremio/server:latest
+          env:
+            - name: NO_CORS
+              value: "1"
+          ports:
+            - containerPort: 11470
+            # - containerPort: 12470
+          resources:
+            requests:
+              cpu: 500m
+              memory: 2Gi
+            limits:
+              cpu: 6000m
+              memory: 8Gi
+
+      volumes:
+        - name: wireguard
+          secret:
+            secretName: wireguard
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stremio-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: stremio
+  ports:
+    - port: 11470
+      nodePort: 30000

@@ -1,18 +1,18 @@
----
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: letsencrypt-prod
-spec:
-  acme:
-    email: cloudflare@nilsherzig.com
-    server: https://acme-v02.api.letsencrypt.org/directory
-    privateKeySecretRef:
-      name: letsencrypt-prod
-    solvers:
-      - dns01:
-          cloudflare:
-            email: cloudflare@nilsherzig.com
-            apiTokenSecretRef:
-              name: cloudflare-api-token-secret
-              key: api-token
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: ClusterIssuer
+# metadata:
+#   name: letsencrypt-prod
+# spec:
+#   acme:
+#     email: cloudflare@nilsherzig.com
+#     server: https://acme-v02.api.letsencrypt.org/directory
+#     privateKeySecretRef:
+#       name: letsencrypt-prod
+#     solvers:
+#       - dns01:
+#           cloudflare:
+#             email: cloudflare@nilsherzig.com
+#             apiTokenSecretRef:
+#               name: cloudflare-api-token-secret
+#               key: api-token

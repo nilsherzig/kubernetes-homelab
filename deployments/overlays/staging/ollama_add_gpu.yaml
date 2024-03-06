@@ -7,12 +7,17 @@ spec:
     spec:
       containers:
         - name: ollama
+          # using the rocm image
           image: ollama/ollama:0.1.36-rocm
+          # adding support for rx 6700 xt
           env:
             - name: HSA_OVERRIDE_GFX_VERSION
-              value: "10.3.0" # adding support for rx 6700 xt
+              value: "10.3.0"
+            - name: OLLAMA_MAX_LOADED
+              value: "2"
+            # - name: OLLAMA_NUM_PARALLEL
+            #   value: "5"
+          # requesting a GPU
           resources:
             limits:
               amd.com/gpu: 1 # requesting a GPU
-          ports:
-            - containerPort: 11434

@@ -1,0 +1,5 @@
+resources:
+  - ./open_webui-deployment.yaml
+  - ./open_webui-service.yaml
+  - ./open-webui-pv.yaml
+  - ./open-webui-pvc.yaml

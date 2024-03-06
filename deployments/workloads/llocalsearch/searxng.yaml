@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: searxng
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: searxng
+  template:
+    metadata:
+      labels:
+        app: searxng
+    spec:
+      containers:
+        - name: searxng
+          image: docker.io/searxng/searxng:latest
+          env:
+            - name: SEARXNG_BASE_URL
+              value: "https://localhost/"
+          volumeMounts:
+            - name: searxng-config
+              mountPath: /etc/searxng/settings.yml
+              subPath: settings.yml
+              readOnly: false
+      volumes:
+        - name: searxng-config
+          configMap:
+            name: searxng-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: searxng-config
+data:
+  uwsgi.ini: |
+  settings.yml: |
+    use_default_settings: true
+    server:
+      # base_url is defined in the SEARXNG_BASE_URL environment variable, see .env and docker-compose.yml
+      secret_key: "51b30631d62b441ec1715009d96cf324f89993401cb2ce8301c4170d2fe6ed13" # change this!
+      limiter: false # can be disabled for a private instance
+      image_proxy: true
+    ui:
+      static_use_hash: true
+    redis:
+      url: redis://redis.staging.svc.cluster.local:6379/0
+    search:
+      safe_search: 0
+      autocomplete: ""
+      default_lang: ""
+      ban_time_on_fail: 5
+      max_ban_time_on_fail: 120
+      suspended_times:
+        SearxEngineAccessDenied: 86400
+        SearxEngineCaptcha: 86400
+        SearxEngineTooManyRequests: 3600
+        cf_SearxEngineCaptcha: 1296000
+        cf_SearxEngineAccessDenied: 86400
+        recaptcha_SearxEngineCaptcha: 604800
+      formats:
+        - html
+        - json
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: searxng
+spec:
+  selector:
+    app: searxng
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

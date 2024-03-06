@@ -2,3 +2,5 @@ resources:
   - ./ollama-deployment.yaml
   - ./ollama-service.yaml
   - ./ollama-ingress.yaml
+  - ./ollama-pv.yaml
+  - ./ollama-pvc.yaml

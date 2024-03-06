@@ -4,7 +4,7 @@ metadata:
   name: speedtest-tls
 spec:
   rules:
-    - host: staging.speed.nilsherzig.com
+    - host: speed.beta.nilsherzig.com
       http:
         paths:
           - path: /
@@ -16,5 +16,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - staging.speed.nilsherzig.com
-      secretName: staging-tls-speed-cert
+        - speed.beta.nilsherzig.com
+      secretName: beta-tls-speed-cert

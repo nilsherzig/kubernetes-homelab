@@ -1,0 +1,7 @@
+resources:
+  - ./backend.yaml
+  - ./frontend.yaml
+  - ./chromadb.yaml
+  - ./redis.yaml
+  - ./searxng.yaml
+  - ./metrics.yaml

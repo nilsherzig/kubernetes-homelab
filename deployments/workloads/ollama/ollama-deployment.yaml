@@ -16,6 +16,14 @@ spec:
     spec:
       containers:
         - name: ollama
+          # add gpu support using kustomize patches later
           image: ollama/ollama:latest
           ports:
             - containerPort: 11434
+          volumeMounts:
+            - name: ollama-pv
+              mountPath: /root/.ollama
+      volumes:
+        - name: ollama-pv
+          persistentVolumeClaim:
+            claimName: ollama-pvc

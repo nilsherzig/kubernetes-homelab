@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: speedtest-service
+  name: ollama
 spec:
   selector:
-    name: speedtest-pod
+    app: ollama
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 3000
+      targetPort: 11434

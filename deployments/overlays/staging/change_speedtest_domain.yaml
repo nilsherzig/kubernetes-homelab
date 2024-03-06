@@ -12,7 +12,7 @@ spec:
             backend:
               service:
                 name: speedtest-service
-                port:
+                port: # why do i need to overwrite this, it doesnt change
                   number: 80
   tls:
     - hosts:

@@ -89,20 +89,22 @@ If you choose to use Cloudflare, you can get your token at https://dash.cloudfla
 Install sealed secrets:
 
 ```bash
-helm install sealed-secrets -n kube-system --set-string fullnameOverride=sealed-secrets-controller sealed-secrets/sealed-secrets
+kubectl apply -f ./argo/sealed_secrets.yaml
 ```
+
+And install the local kubeseal cli.
 
 Create the Cloudflare token secret:
 
 ```bash
-kubectl create secret generic cloudflare-api-token-secret \
---dry-run=client \
---from-literal=api-token=[your-cloudflare-token] \
--n cert-manager \
--o yaml | kubeseal --format yaml > cloudflare-dns-api.yaml
+kubectl create secret generic secret-name --dry-run=client --from-literal=api-token=[your-cloudflare-token] -o yaml | \
+    kubeseal \
+      --controller-name=sealed-secrets-controller \
+      --controller-namespace=kubeseal \
+      --format yaml > ./deployments/base/cloudflare-dns-api.yaml
 ```
 
-This command will create a new encrypted secret and save it to `secret.yaml`. You can now apply this secret to your cluster.
+This command will create a new encrypted secret and save it to `cloudflare-dns-api.yaml`. It will automatically deployed in the argocd step. 
 
 ### Configure Cert Manager
 
@@ -132,3 +134,7 @@ username: admin
 password: `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
 
 You should now see your application in the ArgoCD web interface. Click on it and press `SYNC` to deploy your application.
+
+### Adding a private repo to argo 
+
+./argo/media.yaml is a private repo. To add it to argo you need to create a secret with your git credentials, or add them in the argocd webui. Otherwise argo wont be able to pull commits from the repo.

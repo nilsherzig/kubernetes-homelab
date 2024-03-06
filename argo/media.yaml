@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: "git@github.com:nilsherzig/kubernetes-deployments.git"
     path: deployments/
-    targetRevision: HEAD
+    targetRevision: prod
     directory:
       recurse: true
       jsonnet: {}

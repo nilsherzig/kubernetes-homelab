@@ -2,10 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: prod
 resources:
-  - ../../base2/speedtest
+  - ../../base2/speedtest/
+  - ../../base2/ollama/
 namePrefix: prod-
 # not really needed, since the original files should (?) be the prod version
-# patches:
-#   - path: ./change_speedtest_domain.yaml
-#   - path: ./change_speedtest_service_selector.yaml
-#   - path: ./change_speedtest_pod_label.yaml
+patches:
+  # ollama patches
+  - path: ./ollama_add_gpu.yaml

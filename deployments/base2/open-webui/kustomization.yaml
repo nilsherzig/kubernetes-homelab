@@ -1,5 +1,3 @@
 resources:
-  - ./ollama-deployment.yaml
-  - ./ollama-service.yaml
   - ./open_webui-deployment.yaml
   - ./open_webui-service.yaml

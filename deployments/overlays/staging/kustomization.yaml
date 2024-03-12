@@ -5,6 +5,7 @@ resources:
   - ../../base2/speedtest/
   - ../../base2/ollama/
   - ../../base2/argo/
+  - ../../base2/open-webui/
 namePrefix: staging-
 patches:
   # speedtest patches

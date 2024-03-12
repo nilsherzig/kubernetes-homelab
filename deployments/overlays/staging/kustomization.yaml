@@ -14,3 +14,4 @@ patches:
   - path: ./change_speedtest_pod_label.yaml
   # argo cd patches
   - path: ./change_argo_ingress_domain.yaml
+  - path: ./ollama_add_gpu.yaml

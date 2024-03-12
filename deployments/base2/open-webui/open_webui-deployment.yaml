@@ -17,15 +17,17 @@ spec:
           image: ghcr.io/open-webui/open-webui:main
           ports:
             - containerPort: 8080
-          # volumeMounts:
-          #   - name: open-webui-data
-          #     mountPath: /app/backend/data
+          volumeMounts:
+            - name: open-webui-data
+              mountPath: /app/backend/data
           env:
             - name: HOST
               value: "host.docker.internal"
             - name: OLLAMA_BASE_URL
               value: staging-ollama-service.staging.svc.cluster.local
-      # volumes:
-      #   - name: open-webui-data
-      #     persistentVolumeClaim:
-      #       claimName: open-webui-pvc
+      volumes:
+        - name: open-webui-data
+          emptyDir:
+            sizeLimit: 2000Mi
+          # persistentVolumeClaim:
+          #   claimName: open-webui-pvc

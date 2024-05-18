@@ -3,17 +3,17 @@ kind: Kustomization
 # namespace: staging
 resources:
   # - ../../things/speedtest/
-  - ../../workloads/ollama/
+  # - ../../workloads/ollama/
   - ../../workloads/stremio/
   # - ../../things/argo/
-  - ../../workloads/open-webui/
-  - ../../workloads/llocalsearch/
+  # - ../../workloads/open-webui/
+  # - ../../workloads/llocalsearch/
 # namePrefix: staging-
-patches:
-  # speedtest patches
-  # - path: ./change_speedtest_domain.yaml
-  # - path: ./change_speedtest_service_selector.yaml
-  # - path: ./change_speedtest_pod_label.yaml
-  # argo cd patches
-  # - path: ./change_argo_ingress_domain.yaml
-  - path: ./ollama_add_gpu.yaml
+# patches:
+# speedtest patches
+# - path: ./change_speedtest_domain.yaml
+# - path: ./change_speedtest_service_selector.yaml
+# - path: ./change_speedtest_pod_label.yaml
+# argo cd patches
+# - path: ./change_argo_ingress_domain.yaml
+# - path: ./ollama_add_gpu.yaml

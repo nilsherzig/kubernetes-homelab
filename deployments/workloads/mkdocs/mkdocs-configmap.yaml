@@ -11,5 +11,5 @@ data:
       palette:
         scheme: slate
         primary: black
-    plugins:
-      - optimize
+    # plugins:
+    #   - optimize

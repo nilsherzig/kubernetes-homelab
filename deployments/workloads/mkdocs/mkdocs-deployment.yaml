@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mkdocs-deployment
+  labels:
+    app: mkdocs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mkdocs
+  template:
+    metadata:
+      labels:
+        app: mkdocs
+    spec:
+      containers:
+        - name: mkdocs
+          image: squidfunk/mkdocs-material
+          ports:
+            - containerPort: 8000
+      #     volumeMounts:
+      #       - name: mkdocs-pv
+      #         mountPath: /root/.mkdocs
+      # volumes:
+      #   - name: mkdocs-pv
+      #     persistentVolumeClaim:
+      #       claimName: mkdocs-pvc

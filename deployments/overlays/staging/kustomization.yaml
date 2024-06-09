@@ -3,6 +3,7 @@ kind: Kustomization
 # namespace: staging
 resources:
   - ../../workloads/speedtest/
+  - ../../workloads/mkdocs/
   # - ../../workloads/ollama/
   # - ../../workloads/stremio/
   # - ../../things/argo/

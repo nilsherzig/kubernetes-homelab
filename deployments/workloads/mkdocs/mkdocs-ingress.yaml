@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mkdocs-tls
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: nilsherzig.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mkdocs-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - nilsherzig.com
+      secretName: tls-mkdocs-cert

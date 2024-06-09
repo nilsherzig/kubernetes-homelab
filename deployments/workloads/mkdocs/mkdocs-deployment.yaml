@@ -21,7 +21,7 @@ spec:
             - containerPort: 8000
           volumeMounts:
             - name: mkdocs-config
-              mountPath: /docs
+              mountPath: /docs/mkdocs.yml
               subPath: mkdocs.yml
               readOnly: true
             - name: empty-dir

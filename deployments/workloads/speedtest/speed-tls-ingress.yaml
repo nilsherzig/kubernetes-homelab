@@ -1,23 +1,23 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: speedtest-tls
-#   namespace: default
-#   annotations:
-#     cert-manager.io/cluster-issuer: letsencrypt-prod
-# spec:
-#   rules:
-#     - host: speed.nilsherzig.com
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: speedtest-service
-#                 port:
-#                   number: 80
-#   tls:
-#     - hosts:
-#         - speed.nilsherzig.com
-#       secretName: tls-speed-cert
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: speedtest-tls
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: speed.nilsherzig.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: speedtest-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - speed.nilsherzig.com
+      secretName: tls-speed-cert

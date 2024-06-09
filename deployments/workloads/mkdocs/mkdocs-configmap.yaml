@@ -5,8 +5,11 @@ metadata:
 data:
   mkdocs.yml: |
     site_name: nilsherzig.com
+    site_url: https://nilsherzig.com
     theme:
+      name: material
       palette:
         scheme: slate
+        primary: black
     plugins:
       - optimize

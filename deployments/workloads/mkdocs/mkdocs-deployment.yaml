@@ -19,10 +19,16 @@ spec:
           image: squidfunk/mkdocs-material
           ports:
             - containerPort: 8000
-      #     volumeMounts:
+          volumeMounts:
+            - name: mkdocs-config
+              mountPath: /docs
+              readOnly: true
       #       - name: mkdocs-pv
       #         mountPath: /root/.mkdocs
-      # volumes:
-      #   - name: mkdocs-pv
-      #     persistentVolumeClaim:
-      #       claimName: mkdocs-pvc
+      volumes:
+        # - name: mkdocs-pv
+        #   persistentVolumeClaim:
+        #     claimName: mkdocs-pvc
+        - name: mkdocs-config
+          configMap:
+            name: mkdocs-configmap

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mkdocs-configmap
+  namespace: default
+data:
+  mkdocs.yml: |
+    theme:
+      name: material

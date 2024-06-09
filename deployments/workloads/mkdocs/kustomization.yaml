@@ -2,3 +2,4 @@ resources:
   - ./mkdocs-deployment.yaml
   - ./mkdocs-ingress.yaml
   - ./mkdocs-service.yaml
+  - ./mkdocs-configmap.yaml

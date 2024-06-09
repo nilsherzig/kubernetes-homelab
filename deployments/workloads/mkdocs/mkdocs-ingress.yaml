@@ -13,7 +13,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: mkdocs-service
+                name: speedtest-service
                 port:
                   number: 80
   tls:

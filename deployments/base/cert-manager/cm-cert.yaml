@@ -14,5 +14,5 @@ spec:
           cloudflare:
             email: cloudflare@nilsherzig.com
             apiTokenSecretRef:
-              name: cloudflare-api-token
+              name: cloudflare-dns-token
               key: api-token

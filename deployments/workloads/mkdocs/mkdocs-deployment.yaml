@@ -22,13 +22,13 @@ spec:
           volumeMounts:
             - name: mkdocs-config
               mountPath: /docs
+              subPath: mkdocs.yml
               readOnly: true
-      #       - name: mkdocs-pv
-      #         mountPath: /root/.mkdocs
+            - name: empty-dir
+              mountPath: /docs/docs
       volumes:
-        # - name: mkdocs-pv
-        #   persistentVolumeClaim:
-        #     claimName: mkdocs-pvc
         - name: mkdocs-config
           configMap:
             name: mkdocs-configmap
+        - name: empty-dir
+          emptyDir: {}

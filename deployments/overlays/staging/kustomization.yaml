@@ -8,7 +8,7 @@ resources:
   # - ../../things/argo/
   # - ../../workloads/open-webui/
   # - ../../workloads/llocalsearch/
-# namePrefix: staging-
+namePrefix: staging-
 patches:
   # speedtest patches
   - path: ./change_speedtest_domain.yaml

@@ -11,7 +11,7 @@ resources:
 namePrefix: staging-
 patches:
   # speedtest patches
-  - path: ./change_speedtest_domain.yaml
+  - path: ./speedtest_change_domain.yaml
   - path: ./change_speedtest_service_selector.yaml
   - path: ./change_speedtest_pod_label.yaml
 # argo cd patches

@@ -4,6 +4,9 @@ metadata:
   name: mkdocs-configmap
 data:
   mkdocs.yml: |
-    site_name: nils docs 
+    site_name: nilsherzig.com
     theme:
-      name: material
+      palette:
+        scheme: slate
+    plugins:
+      - optimize

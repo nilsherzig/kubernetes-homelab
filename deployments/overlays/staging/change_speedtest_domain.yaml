@@ -16,5 +16,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - speed.beta.nilsherzig.com
+        - beta.speed.nilsherzig.com
       secretName: beta-tls-speed-cert

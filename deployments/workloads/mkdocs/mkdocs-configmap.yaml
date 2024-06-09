@@ -4,5 +4,6 @@ metadata:
   name: mkdocs-configmap
 data:
   mkdocs.yml: |
+    site_name: nils docs 
     theme:
       name: material

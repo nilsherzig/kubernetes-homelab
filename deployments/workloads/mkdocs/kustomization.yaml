@@ -3,3 +3,4 @@ resources:
   - ./mkdocs-ingress.yaml
   - ./mkdocs-service.yaml
   - ./mkdocs-configmap.yaml
+  - ./mkdocs-cilium.yaml

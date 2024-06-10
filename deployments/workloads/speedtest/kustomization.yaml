@@ -1,4 +1,5 @@
 resources:
-  - ./speed-pod.yaml
+  - ./speed-deployment.yaml
   - ./speed-service.yaml
   - ./speed-tls-ingress.yaml
+  - ./speed-cilium.yaml

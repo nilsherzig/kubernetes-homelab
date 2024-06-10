@@ -4,7 +4,7 @@ metadata:
   name: speedtest-service
 spec:
   selector:
-    name: speedtest-pod
+    app: speedtest
   ports:
     - protocol: TCP
       port: 80

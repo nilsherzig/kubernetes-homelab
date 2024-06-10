@@ -5,12 +5,12 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app: mkdocs
+      app: speedtest
   egress:
     - toPorts:
         - ports:
   ingress:
     - toPorts:
         - ports:
-            - port: "8000"
-              protocol: TCP
+            - port: "3000"
+              protocol: ANY

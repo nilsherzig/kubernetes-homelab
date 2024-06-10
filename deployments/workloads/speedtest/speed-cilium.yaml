@@ -1,7 +1,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "mkdocs"
+  name: "speedtest"
 spec:
   endpointSelector:
     matchLabels:

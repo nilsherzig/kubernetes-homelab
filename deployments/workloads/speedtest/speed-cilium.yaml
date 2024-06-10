@@ -13,4 +13,4 @@ spec:
     - toPorts:
         - ports:
             - port: "3000"
-              protocol: ANY
+              protocol: TCP

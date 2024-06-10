@@ -1,7 +1,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "mkdocs only allow incomming tcp traffic on port 8000"
+  name: "mkdocs"
 spec:
   endpointSelector:
     matchLabels:

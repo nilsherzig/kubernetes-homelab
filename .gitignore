@@ -1,3 +1,8 @@
 k3s.yaml
 *secret.yaml
 .vscode
+tests/kaniko/kaniko-auth.yaml
+deployments/overlays/staging/create_wireguard_secret.sh
+talos/_out
+tests/kaniko
+talos/kubeconfig

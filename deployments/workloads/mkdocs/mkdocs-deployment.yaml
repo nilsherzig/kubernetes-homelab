@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mkdocs
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: mkdocs
@@ -24,11 +24,14 @@ spec:
               mountPath: /docs/mkdocs.yml
               subPath: mkdocs.yml
               readOnly: true
-            - name: empty-dir
+            - name: nfs-docs
               mountPath: /docs/docs
       volumes:
         - name: mkdocs-config
           configMap:
             name: mkdocs-configmap
-        - name: empty-dir
-          emptyDir: {}
+        - name: nfs-docs
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/mkdocs
+            readOnly: true

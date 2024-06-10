@@ -34,4 +34,4 @@ spec:
           nfs:
             server: 10.10.10.146
             path: /mnt/bigdata/kubernetes/mkdocs
-            readOnly: true
+            readOnly: false

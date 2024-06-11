@@ -20,16 +20,9 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
-            # - name: mkdocs-config
-            #   mountPath: /docs/mkdocs.yml
-            #   subPath: mkdocs.yml
-            #   readOnly: true
             - name: nfs-docs
               mountPath: /usr/share/nginx/html
       volumes:
-        # - name: mkdocs-config
-        #   configMap:
-        #     name: mkdocs-configmap
         - name: nfs-docs
           nfs:
             server: 10.10.10.146

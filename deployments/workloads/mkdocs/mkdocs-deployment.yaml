@@ -25,10 +25,10 @@ spec:
           resources:
             limits:
               memory: "128Mi"
-              cpu: "500m"
+              cpu: "100m"
             requests:
               memory: "64Mi"
-              cpu: "250m"
+              cpu: "100m"
       volumes:
         - name: nfs-docs
           nfs:

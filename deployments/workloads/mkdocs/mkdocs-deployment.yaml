@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mkdocs
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: mkdocs

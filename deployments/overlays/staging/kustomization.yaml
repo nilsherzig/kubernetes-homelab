@@ -3,10 +3,9 @@ kind: Kustomization
 # namespace: staging
 resources:
   - ../../workloads/speedtest/
-  - ../../workloads/mkdocs/
   # - ../../workloads/ollama/
   # - ../../workloads/stremio/
-  # - ../../things/argo/
+  # - ../../workloads/argo/
   # - ../../workloads/open-webui/
   # - ../../workloads/llocalsearch/
 namePrefix: staging-

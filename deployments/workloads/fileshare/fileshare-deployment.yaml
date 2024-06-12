@@ -26,3 +26,12 @@ spec:
             requests:
               memory: "500Mi"
               cpu: "500m"
+          volumeMounts:
+            - name: fileshare
+              mountPath: /opt/app/backend/data
+      volumes:
+        - name: fileshare
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/fileshare
+            readOnly: false

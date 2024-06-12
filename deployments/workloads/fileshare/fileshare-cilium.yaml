@@ -9,6 +9,12 @@ spec:
   egress:
     - toPorts:
         - ports:
+            - port: "443"
+              protocol: TCP
+          rules:
+            http:
+              - host: "github.com"
+                path: "/login/oauth/*"
   ingress:
     - toPorts:
         - ports:

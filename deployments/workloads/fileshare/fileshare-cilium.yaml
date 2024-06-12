@@ -6,18 +6,18 @@ spec:
   endpointSelector:
     matchLabels:
       app: fileshare
-  egress:
-    - toPorts:
-        - ports:
-            - port: "53"
-              protocol: ANY
-          rules:
-            dns:
-              - matchName: "github.com"
-
-        - ports:
-            - port: "443"
-              protocol: TCP
+  # egress:
+  #   - toPorts:
+  #       - ports:
+  #           - port: "53"
+  #             protocol: ANY
+  #         rules:
+  #           dns:
+  #             - matchName: "github.com"
+  #
+  #       - ports:
+  #           - port: "443"
+  #             protocol: TCP
   ingress:
     - toPorts:
         - ports:

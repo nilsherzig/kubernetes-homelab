@@ -14,8 +14,8 @@ spec:
             - port: "443"
               protocol: TCP
           rules:
-            dns:
-              - matchName: "github.com"
+            # dns:
+            #   - matchName: "github.com"
             http:
               - host: "github.com"
                 path: "/login/oauth/*"

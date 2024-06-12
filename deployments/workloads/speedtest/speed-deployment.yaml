@@ -17,6 +17,9 @@ spec:
       containers:
         - name: speedtest
           image: ghcr.io/librespeed/speedtest:latest
+          env:
+            - name: MODE
+              value: standalone
           ports:
             - containerPort: 80
           resources:

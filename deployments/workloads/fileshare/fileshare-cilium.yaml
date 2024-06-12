@@ -1,11 +1,11 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "speedtest"
+  name: "fileshare"
 spec:
   endpointSelector:
     matchLabels:
-      app: speedtest
+      app: fileshare
   egress:
     - toPorts:
         - ports:

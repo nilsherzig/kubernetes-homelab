@@ -1,0 +1,5 @@
+resources:
+  - ./fileshare-deployment.yaml
+  - ./fileshare-service.yaml
+  - ./fileshare-tls-ingress.yaml
+  - ./fileshare-cilium.yaml

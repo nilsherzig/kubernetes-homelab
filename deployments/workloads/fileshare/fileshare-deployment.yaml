@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fileshare-deployment
+  labels:
+    app: fileshare
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fileshare
+  template:
+    metadata:
+      labels:
+        app: fileshare
+    spec:
+      containers:
+        - name: fileshare
+          image: stonith404/pingvin-share
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"

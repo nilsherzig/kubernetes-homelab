@@ -1,0 +1,16 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "speedtest"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: speedtest
+  egress:
+    - toPorts:
+        - ports:
+  ingress:
+    - toPorts:
+        - ports:
+            - port: "3000"
+              protocol: TCP

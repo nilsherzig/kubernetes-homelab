@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fileshare-service
+spec:
+  selector:
+    app: fileshare
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000

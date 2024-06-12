@@ -14,6 +14,7 @@ spec:
           rules:
             dns:
               - matchName: "github.com"
+              - matchPattern: "github.com"
 
         - ports:
             - port: "443"

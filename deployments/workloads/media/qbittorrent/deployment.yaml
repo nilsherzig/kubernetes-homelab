@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbittorrent-deployment
+  labels:
+    app: qbittorrent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qbittorrent
+  template:
+    metadata:
+      labels:
+        app: qbittorrent
+    spec:
+      containers:
+        - name: qbittorrent
+          image: lscr.io/linuxserver/qbittorrent:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+            - name: WEBUI_PORT
+              value: "8080"
+            - name: TORRENTING_PORT
+              value: "6881"
+          ports:
+            - containerPort: 8080
+            - containerPort: 6881
+          volumeMounts:
+            - name: nfs-downloads
+              mountPath: /downloads
+            - name: nfs-configs-qbittorrent
+              mountPath: /config
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+      volumes:
+        - name: nfs-downloads
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/downloads
+            readOnly: true
+        - name: nfs-configs-qbittorrent
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/configs/qbittorrent
+            readOnly: false

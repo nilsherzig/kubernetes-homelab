@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr-deployment
+  labels:
+    app: radarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      containers:
+        - name: radarr
+          image: lscr.io/linuxserver/radarr:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+          ports:
+            - containerPort: 7878
+          volumeMounts:
+            - name: nfs-downloads
+              mountPath: /downloads
+            - name: nfs-movies
+              mountPath: /media/movies
+            - name: nfs-configs-radarr
+              mountPath: /config
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+      volumes:
+        - name: nfs-downloads
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/downloads
+            readOnly: true
+        - name: nfs-movies
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/movies
+            readOnly: true
+        - name: nfs-configs-radarr
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/configs/radarr
+            readOnly: false

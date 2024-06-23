@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin-deployment
+  labels:
+    app: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      containers:
+        - name: jellyfin
+          image: lscr.io/linuxserver/jellyfin:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+            - name: JELLYFIN_PublishedServerUrl
+              value: "https://stream.nilsherzig.com"
+            - name: JELLYFIN_CONFIG_DIR
+              value: "/config"
+          ports:
+            - containerPort: 8096
+            # - containerPort: 7359
+            # - containerPort: 1900
+          volumeMounts:
+            - name: nfs-shows
+              mountPath: /media/shows
+            - name: nfs-movies
+              mountPath: /media/movies
+          resources:
+            limits:
+              memory: "3000Mi"
+              cpu: "3000m"
+            requests:
+              memory: "1000Mi"
+              cpu: "2000m"
+      volumes:
+        - name: nfs-shows
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/shows
+            readOnly: true
+        - name: nfs-movies
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/movies
+            readOnly: true
+        - name: nfs-configs-jellyfin
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/configs/jellyfin
+            readOnly: false

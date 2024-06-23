@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyseerr-deployment
+  labels:
+    app: jellyseerr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyseerr
+  template:
+    metadata:
+      labels:
+        app: jellyseerr
+    spec:
+      containers:
+        - name: jellyseerr
+          image: fallenbagel/jellyseerr:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+          ports:
+            - containerPort: 5055
+          volumeMounts:
+            - name: nfs-downloads
+              mountPath: /downloads
+            - name: nfs-shows
+              mountPath: /media/shows
+            - name: nfs-configs-jellyseerr
+              mountPath: /config
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+      volumes:
+        - name: nfs-configs-jellyseerr
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/configs/jellyseerr
+            readOnly: false

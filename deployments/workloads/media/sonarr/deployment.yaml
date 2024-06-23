@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr-deployment
+  labels:
+    app: sonarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonarr
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      containers:
+        - name: sonarr
+          image: lscr.io/linuxserver/sonarr:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+          ports:
+            - containerPort: 8989
+          volumeMounts:
+            - name: nfs-downloads
+              mountPath: /downloads
+            - name: nfs-shows
+              mountPath: /media/shows
+            - name: nfs-configs-sonarr
+              mountPath: /config
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+      volumes:
+        - name: nfs-downloads
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/downloads
+            readOnly: true
+        - name: nfs-shows
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/shows
+            readOnly: true
+        - name: nfs-configs-sonarr
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/configs/sonarr
+            readOnly: false

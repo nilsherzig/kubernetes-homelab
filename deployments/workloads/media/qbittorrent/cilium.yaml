@@ -1,0 +1,24 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "qbittorrent"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: qbittorrent
+  egress:
+    - toPorts:
+        - ports:
+            - port: "80"
+              protocol: TCP
+            - port: "443"
+              protocol: TCP
+            - port: "6881"
+              protocol: ANY
+  ingress:
+    - toPorts:
+        - ports:
+            - port: "8080"
+              protocol: TCP
+            - port: "6881"
+              protocol: ANY

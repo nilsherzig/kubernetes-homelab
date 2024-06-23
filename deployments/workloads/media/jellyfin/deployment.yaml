@@ -14,11 +14,11 @@ spec:
       labels:
         app: jellyfin
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
         - name: jellyfin
           image: lscr.io/linuxserver/jellyfin:latest
-          securityContext:
-            fsGroup: 1000
           env:
             - name: PUID
               value: "1000"

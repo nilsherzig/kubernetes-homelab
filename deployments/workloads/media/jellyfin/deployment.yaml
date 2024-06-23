@@ -53,7 +53,7 @@ spec:
         - name: nfs-media
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media
+            path: /mnt/bigdata/kubernetes/media/data
             readOnly: false
         - name: nfs-configs
           nfs:

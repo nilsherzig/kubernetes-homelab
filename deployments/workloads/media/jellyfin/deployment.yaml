@@ -18,7 +18,7 @@ spec:
         - name: jellyfin
           image: lscr.io/linuxserver/jellyfin:latest
           securityContext:
-            runAsUser: 1000
+            runAsUser: 1100
           env:
             - name: PUID
               value: "1000"

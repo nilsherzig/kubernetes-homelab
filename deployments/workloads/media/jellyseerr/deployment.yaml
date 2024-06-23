@@ -27,8 +27,9 @@ spec:
           ports:
             - containerPort: 5055
           volumeMounts:
-            - name: nfs-configs-jellyseerr
+            - name: nfs-configs
               mountPath: /config
+              subPath: jellyseerr
           resources:
             limits:
               memory: "1000Mi"
@@ -37,8 +38,8 @@ spec:
               memory: "500Mi"
               cpu: "500m"
       volumes:
-        - name: nfs-configs-jellyseerr
+        - name: nfs-configs
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/configs/jellyseerr
+            path: /mnt/bigdata/kubernetes/media/configs
             readOnly: false

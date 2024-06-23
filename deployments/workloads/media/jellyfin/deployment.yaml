@@ -37,6 +37,9 @@ spec:
               mountPath: /media/shows
             - name: nfs-movies
               mountPath: /media/movies
+            - name: nfs-configs
+              mountPath: /config
+              subPath: jellyfin
           resources:
             limits:
               memory: "3000Mi"
@@ -49,14 +52,14 @@ spec:
           nfs:
             server: 10.10.10.146
             path: /mnt/bigdata/kubernetes/media/shows
-            readOnly: true
+            readOnly: false
         - name: nfs-movies
           nfs:
             server: 10.10.10.146
             path: /mnt/bigdata/kubernetes/media/movies
-            readOnly: true
-        - name: nfs-configs-jellyfin
+            readOnly: false
+        - name: nfs-configs
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/configs/jellyfin
+            path: /mnt/bigdata/kubernetes/media/configs
             readOnly: false

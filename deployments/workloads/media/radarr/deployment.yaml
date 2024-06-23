@@ -31,8 +31,9 @@ spec:
               mountPath: /downloads
             - name: nfs-movies
               mountPath: /media/movies
-            - name: nfs-configs-radarr
+            - name: nfs-configs
               mountPath: /config
+              subPath: radarr
           resources:
             limits:
               memory: "1000Mi"
@@ -51,8 +52,8 @@ spec:
             server: 10.10.10.146
             path: /mnt/bigdata/kubernetes/media/movies
             readOnly: true
-        - name: nfs-configs-radarr
+        - name: nfs-configs
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/configs/radarr
+            path: /mnt/bigdata/kubernetes/media/configs
             readOnly: false

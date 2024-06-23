@@ -31,8 +31,9 @@ spec:
               mountPath: /downloads
             - name: nfs-shows
               mountPath: /media/shows
-            - name: nfs-configs-sonarr
+            - name: nfs-configs
               mountPath: /config
+              subPath: sonarr
           resources:
             limits:
               memory: "1000Mi"
@@ -51,8 +52,8 @@ spec:
             server: 10.10.10.146
             path: /mnt/bigdata/kubernetes/media/shows
             readOnly: true
-        - name: nfs-configs-sonarr
+        - name: nfs-configs
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/configs/sonarr
+            path: /mnt/bigdata/kubernetes/media/configs
             readOnly: false

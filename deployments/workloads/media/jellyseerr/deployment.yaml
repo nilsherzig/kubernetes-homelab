@@ -14,6 +14,8 @@ spec:
       labels:
         app: jellyseerr
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
         - name: jellyseerr
           image: fallenbagel/jellyseerr:latest

@@ -15,6 +15,10 @@ spec:
               protocol: TCP
             - port: "443"
               protocol: TCP
+            - port: "8989"
+              protocol: TCP
+            - port: "7878"
+              protocol: TCP
   ingress:
     - toPorts:
         - ports:

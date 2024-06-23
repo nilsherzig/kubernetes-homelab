@@ -27,10 +27,6 @@ spec:
           ports:
             - containerPort: 5055
           volumeMounts:
-            - name: nfs-downloads
-              mountPath: /downloads
-            - name: nfs-shows
-              mountPath: /media/shows
             - name: nfs-configs-jellyseerr
               mountPath: /config
           resources:

@@ -28,7 +28,7 @@ spec:
             - containerPort: 5055
           volumeMounts:
             - name: nfs-configs
-              mountPath: /config
+              mountPath: /app/config
               subPath: jellyseerr
           resources:
             limits:

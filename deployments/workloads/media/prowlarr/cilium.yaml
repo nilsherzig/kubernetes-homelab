@@ -22,5 +22,5 @@ spec:
   ingress:
     - toPorts:
         - ports:
-            - port: "6969"
+            - port: "9696"
               protocol: TCP

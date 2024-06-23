@@ -25,7 +25,7 @@ spec:
             - name: TZ
               value: "Europe/Berlin"
           ports:
-            - containerPort: 6969
+            - containerPort: 9696
           volumeMounts:
             - name: nfs-configs
               mountPath: /config

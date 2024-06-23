@@ -32,8 +32,9 @@ spec:
             - containerPort: 8080
             - containerPort: 6881
           volumeMounts:
-            - name: nfs-downloads
+            - name: nfs-media
               mountPath: /downloads
+              subPath: downloads
             - name: nfs-configs
               mountPath: /config
               subPath: qbittorrent
@@ -45,10 +46,10 @@ spec:
               memory: "500Mi"
               cpu: "500m"
       volumes:
-        - name: nfs-downloads
+        - name: nfs-media
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/downloads
+            path: /mnt/bigdata/kubernetes/media
             readOnly: false
         - name: nfs-configs
           nfs:

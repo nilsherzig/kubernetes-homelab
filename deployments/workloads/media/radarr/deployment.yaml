@@ -27,10 +27,12 @@ spec:
           ports:
             - containerPort: 7878
           volumeMounts:
-            - name: nfs-downloads
-              mountPath: /downloads
-            - name: nfs-movies
+            - name: nfs-media
               mountPath: /media/movies
+              subPath: movies
+            - name: nfs-media
+              mountPath: /downloads
+              subPath: downloads
             - name: nfs-configs
               mountPath: /config
               subPath: radarr
@@ -42,15 +44,10 @@ spec:
               memory: "500Mi"
               cpu: "500m"
       volumes:
-        - name: nfs-downloads
+        - name: nfs-media
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/downloads
-            readOnly: true
-        - name: nfs-movies
-          nfs:
-            server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/movies
+            path: /mnt/bigdata/kubernetes/media
             readOnly: true
         - name: nfs-configs
           nfs:

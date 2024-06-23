@@ -33,10 +33,12 @@ spec:
             # - containerPort: 7359
             # - containerPort: 1900
           volumeMounts:
-            - name: nfs-shows
+            - name: nfs-media
               mountPath: /media/shows
-            - name: nfs-movies
+              subPath: shows
+            - name: nfs-media
               mountPath: /media/movies
+              subPath: movies
             - name: nfs-configs
               mountPath: /config
               subPath: jellyfin
@@ -48,15 +50,10 @@ spec:
               memory: "1000Mi"
               cpu: "2000m"
       volumes:
-        - name: nfs-shows
+        - name: nfs-media
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/shows
-            readOnly: false
-        - name: nfs-movies
-          nfs:
-            server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/movies
+            path: /mnt/bigdata/kubernetes/media
             readOnly: false
         - name: nfs-configs
           nfs:

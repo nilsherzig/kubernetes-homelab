@@ -27,10 +27,12 @@ spec:
           ports:
             - containerPort: 8989
           volumeMounts:
-            - name: nfs-downloads
-              mountPath: /downloads
-            - name: nfs-shows
+            - name: nfs-media
               mountPath: /media/shows
+              subPath: shows
+            - name: nfs-media
+              mountPath: /downlaods
+              subPath: downlaods
             - name: nfs-configs
               mountPath: /config
               subPath: sonarr
@@ -42,15 +44,10 @@ spec:
               memory: "500Mi"
               cpu: "500m"
       volumes:
-        - name: nfs-downloads
+        - name: nfs-media
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/downloads
-            readOnly: true
-        - name: nfs-shows
-          nfs:
-            server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/shows
+            path: /mnt/bigdata/kubernetes/media
             readOnly: true
         - name: nfs-configs
           nfs:

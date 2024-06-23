@@ -34,10 +34,10 @@ spec:
           volumeMounts:
             - name: nfs-media
               mountPath: /downloads
-              subPath: /downloads/
+              subPath: downloads/
             - name: nfs-configs
               mountPath: /config
-              subPath: /qbittorrent/
+              subPath: qbittorrent/
           resources:
             limits:
               memory: "1000Mi"
@@ -49,10 +49,10 @@ spec:
         - name: nfs-media
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/
+            path: /mnt/bigdata/kubernetes/media
             readOnly: false
         - name: nfs-configs
           nfs:
             server: 10.10.10.146
-            path: /mnt/bigdata/kubernetes/media/configs/
+            path: /mnt/bigdata/kubernetes/media/configs
             readOnly: false

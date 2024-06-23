@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sonarr-service
+  name: sonarr
 spec:
   selector:
     app: sonarr

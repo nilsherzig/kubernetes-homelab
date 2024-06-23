@@ -6,15 +6,6 @@ spec:
   endpointSelector:
     matchLabels:
       app: qbittorrent
-  egress:
-    - toPorts:
-        - ports:
-            - port: "80"
-              protocol: TCP
-            - port: "443"
-              protocol: TCP
-            - port: "6881"
-              protocol: ANY
   ingress:
     - toPorts:
         - ports:

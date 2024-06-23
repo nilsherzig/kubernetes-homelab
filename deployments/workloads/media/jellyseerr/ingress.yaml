@@ -13,7 +13,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: jellyseerr-service
+                name: jellyseerr
                 port:
                   number: 80
   tls:

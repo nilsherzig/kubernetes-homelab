@@ -31,8 +31,8 @@ spec:
               mountPath: /media/shows
               subPath: shows
             - name: nfs-media
-              mountPath: /downlaods
-              subPath: downlaods
+              mountPath: /downloads
+              subPath: downloads
             - name: nfs-configs
               mountPath: /config
               subPath: sonarr

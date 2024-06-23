@@ -16,7 +16,6 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
-        runAsGroup: 1000
       containers:
         - name: jellyseerr
           image: fallenbagel/jellyseerr:latest

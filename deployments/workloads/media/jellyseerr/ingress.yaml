@@ -1,22 +1,22 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: jellyseerr-tls
-#   annotations:
-#     cert-manager.io/cluster-issuer: letsencrypt-prod
-# spec:
-#   rules:
-#     - host: request.nilsherzig.com
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: jellyseerr
-#                 port:
-#                   number: 80
-#   tls:
-#     - hosts:
-#         - request.nilsherzig.com
-#       secretName: tls-jellyseerr-cert
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyseerr-tls
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: request.nilsherzig.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jellyseerr
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - request.nilsherzig.com
+      secretName: tls-jellyseerr-cert

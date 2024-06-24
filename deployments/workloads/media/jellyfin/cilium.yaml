@@ -11,6 +11,10 @@ spec:
         - ports:
             - port: "1900"
               protocol: UDP
+            - port: "53"
+              protocol: ANY
+            - port: "443"
+              protocol: TCP
   ingress:
     - toPorts:
         - ports:

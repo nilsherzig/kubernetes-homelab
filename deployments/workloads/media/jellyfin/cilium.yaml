@@ -6,9 +6,11 @@ spec:
   endpointSelector:
     matchLabels:
       app: jellyfin
-  # egress:
-  #   - toPorts:
-  #       - ports:
+  egress:
+    - toPorts:
+        - ports:
+            - port: "1900"
+              protocol: UDP
   ingress:
     - toPorts:
         - ports:

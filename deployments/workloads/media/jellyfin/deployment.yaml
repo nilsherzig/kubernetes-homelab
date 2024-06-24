@@ -46,10 +46,10 @@ spec:
               subPath: jellyfin
           resources:
             limits:
-              memory: "3000Mi"
+              memory: "5000Mi"
               cpu: "3000m"
             requests:
-              memory: "1000Mi"
+              memory: "5000Mi"
               cpu: "2000m"
       volumes:
         - name: nfs-media

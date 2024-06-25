@@ -1,5 +1,5 @@
 - op: add
-  path: /spec/template/spec/sidecarContainers
+  path: /spec/template/spec/initContainers
   value:
     - name: gluetun
       image: ghcr.io/qdm12/gluetun # Optionally you can use the "qmcgaw/gluetun" image as well as specify what version of Gluetun you desire

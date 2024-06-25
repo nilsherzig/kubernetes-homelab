@@ -9,6 +9,8 @@ spec:
   egress:
     - toPorts:
         - ports:
+            - port: "8888"
+              protocol: TCP
             - port: "80"
               protocol: TCP
             - port: "443"

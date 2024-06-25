@@ -11,7 +11,5 @@ spec:
         - ports:
             - port: "8080"
               protocol: TCP
-            - port: "8888"
-              protocol: TCP
             - port: "6881"
               protocol: ANY

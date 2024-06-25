@@ -6,6 +6,7 @@ resources:
   - ./radarr/
   - ./sonarr/
   - ./gluetun/deployment.yaml
+  - ./gluetun/service.yaml.yaml
 # secretGenerator:
 #   - name: wireguard-private-key-qbittorrent
 #     envs:

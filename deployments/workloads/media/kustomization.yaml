@@ -1,10 +1,10 @@
 resources:
   - ./jellyfin/
-  - ./jellyseerr/
-  - ./prowlarr/
-  - ./qbittorrent/
-  - ./radarr/
-  - ./sonarr/
+  # - ./jellyseerr/
+  # - ./prowlarr/
+  # - ./qbittorrent/
+  # - ./radarr/
+  # - ./sonarr/
   # - ./gluetun/deployment.yaml
   # - ./gluetun/service.yaml
 # secretGenerator:
@@ -12,9 +12,9 @@ resources:
 #     envs:
 #       - .env.wireguard-private-key
 #
-patches:
-  # inject the gluetun sidecar into all deployments with the label gluetun=true
-  - path: ./gluetun/gluetun-patch.yaml
-    target:
-      kind: Deployment
-      labelSelector: gluetun=true
+# patches:
+#   # inject the gluetun sidecar into all deployments with the label gluetun=true
+#   - path: ./gluetun/gluetun-patch.yaml
+#     target:
+#       kind: Deployment
+#       labelSelector: gluetun=true

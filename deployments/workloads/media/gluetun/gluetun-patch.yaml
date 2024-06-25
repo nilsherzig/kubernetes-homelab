@@ -28,6 +28,7 @@
             secretKeyRef:
               name: wireguard-private-key
               key: privatekey
+
         # generate using the following kubectl command
         # kubeclt create secret generic wireguard-private-key --from-literal=privatekey=[key]
 
@@ -36,9 +37,6 @@
 
         - name: SERVER_CITIES
           value: "Copenhagen"
-
-        # - name: FIREWALL_DEBUG
-        #   value: "on"
 
 - op: add
   path: /spec/template/spec/volumes/-

@@ -30,12 +30,6 @@ spec:
             - name: TZ
               value: "Europe/Berlin"
 
-            - name: SHADOWSOCKS
-              value: "on"
-
-            - name: SHADOWSOCKS_LOG
-              value: "on"
-
             - name: VPN_SERVICE_PROVIDER
               value: "mullvad"
 

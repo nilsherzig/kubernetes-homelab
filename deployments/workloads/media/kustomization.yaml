@@ -6,9 +6,14 @@ resources:
   - ./radarr/
   - ./sonarr/
   - ./gluetun/deployment.yaml
-patches:
-  # inject the gluetun sidecar into all deployments with the label vpn=true
-  - path: ./gluetun/shadowsocks-patch.yaml
-    target:
-      kind: Deployment
-      labelSelector: vpn=true
+# secretGenerator:
+#   - name: wireguard-private-key-qbittorrent
+#     envs:
+#       - .env.wireguard-private-key
+#
+# patches:
+#   # inject the gluetun sidecar into all deployments with the label gluetun=true
+#   - path: ./gluetun/gluetun-patch.yaml
+#     target:
+#       kind: Deployment
+#       labelSelector: gluetun=true

@@ -4,9 +4,9 @@ metadata:
   name: qbittorrent-deployment
   labels:
     app: qbittorrent
-    vpn: "true"
+    gluetun: "true"
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: qbittorrent

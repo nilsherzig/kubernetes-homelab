@@ -5,16 +5,16 @@ resources:
   - ./qbittorrent/
   - ./radarr/
   - ./sonarr/
-  - ./gluetun/deployment.yaml
-  - ./gluetun/service.yaml
+  # - ./gluetun/deployment.yaml
+  # - ./gluetun/service.yaml
 # secretGenerator:
 #   - name: wireguard-private-key-qbittorrent
 #     envs:
 #       - .env.wireguard-private-key
 #
-# patches:
-#   # inject the gluetun sidecar into all deployments with the label gluetun=true
-#   - path: ./gluetun/gluetun-patch.yaml
-#     target:
-#       kind: Deployment
-#       labelSelector: gluetun=true
+patches:
+  # inject the gluetun sidecar into all deployments with the label gluetun=true
+  - path: ./gluetun/gluetun-patch.yaml
+    target:
+      kind: Deployment
+      labelSelector: gluetun=true

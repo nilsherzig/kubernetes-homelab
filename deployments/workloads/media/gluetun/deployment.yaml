@@ -33,6 +33,9 @@ spec:
             - containerPort: 8888
 
           env:
+            - name: FIREWALL_INPUT_PORTS
+              value: "8888"
+
             - name: HTTPPROXY
               value: "on"
 

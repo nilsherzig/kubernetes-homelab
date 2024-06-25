@@ -1,0 +1,6 @@
+resources:
+  - ./paperless-deployment.yaml
+  - ./paperless-ingress.yaml
+  - ./paperless-service.yaml
+  - ./paperless-configmap.yaml
+  - ./paperless-cilium.yaml

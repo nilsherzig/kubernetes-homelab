@@ -5,3 +5,10 @@ resources:
   - ./qbittorrent/
   - ./radarr/
   - ./sonarr/
+  # - ./gluetun/
+patches:
+  # inject the gluetun sidecar into all deployments with the label vpn=true
+  - path: ./gluetun/gluetun-patch.yaml
+    target:
+      kind: Deployment
+      labelSelector: vpn=true

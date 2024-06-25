@@ -4,6 +4,7 @@ metadata:
   name: qbittorrent-deployment
   labels:
     app: qbittorrent
+    vpn: "true"
 spec:
   replicas: 0
   selector:

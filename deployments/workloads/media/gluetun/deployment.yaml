@@ -18,15 +18,33 @@ spec:
         - name: gluetun
           image: ghcr.io/qdm12/gluetun # Optionally you can use the "qmcgaw/gluetun" image as well as specify what version of Gluetun you desire
           imagePullPolicy: Always
+
           securityContext:
             capabilities:
               add: ["NET_ADMIN"]
+
           readinessProbe:
             exec:
               command: ["/gluetun-entrypoint", "healthcheck"]
             initialDelaySeconds: 30
             periodSeconds: 5
+
+          ports:
+            - containerPort: 8888
+
           env:
+            - name: HTTPPROXY
+              value: "on"
+
+            - name: HTTPPROXY_USER
+              value: "test"
+
+            - name: HTTPPROXY_PASSWORD
+              value: "test"
+
+            - name: HTTPPROXY_LOG
+              value: "on"
+
             - name: TZ
               value: "Europe/Berlin"
 

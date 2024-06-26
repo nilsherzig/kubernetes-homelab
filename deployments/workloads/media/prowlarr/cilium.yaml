@@ -29,7 +29,7 @@ spec:
     matchLabels:
       app: prowlarr
   ingress:
-    - fromEntities:
+    - formEndpoints:
         - matchLabels:
             - app: radarr
             - app: sonarr

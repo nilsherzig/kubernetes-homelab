@@ -45,7 +45,7 @@ spec:
     matchLabels:
       app: prowlarr
   ingress:
-    - formEndpoints:
+    - fromEndpoints:
         - matchLabels:
             - app: radarr
             - app: sonarr

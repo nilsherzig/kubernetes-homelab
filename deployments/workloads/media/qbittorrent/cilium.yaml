@@ -22,7 +22,7 @@ spec:
     - toEntities:
         - world
   ingress:
-    - formEndpoints:
+    - fromEndpoints:
         - matchLabels:
             - app: prowlarr
             - app: sonarr

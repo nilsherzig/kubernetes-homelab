@@ -4,8 +4,7 @@ metadata:
   name: "default-deny-all"
 spec:
   endpointSelector:
-    matchLabels: {}
+    matchLabels:
+      role: "restricted"
   egress:
-    - {}
   ingress:
-    - {}

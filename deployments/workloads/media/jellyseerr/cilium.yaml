@@ -2,8 +2,6 @@ apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
   name: "jellyseerr"
-  sonarr: "allow"
-  radarr: "allow"
 spec:
   endpointSelector:
     matchLabels:

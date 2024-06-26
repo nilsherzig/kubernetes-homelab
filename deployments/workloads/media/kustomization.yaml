@@ -1,8 +1,8 @@
 resources:
   - ./jellyfin/
   # - ./jellyseerr/
-  # - ./prowlarr/
-  # - ./qbittorrent/
+  - ./prowlarr/
+  - ./qbittorrent/
   # - ./radarr/
   # - ./sonarr/
   - ./gluetun/deployment.yaml

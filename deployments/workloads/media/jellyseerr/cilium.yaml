@@ -20,10 +20,14 @@ spec:
             - port: "443"
               protocol: TCP
   ingress:
-    - fromEndpoints:
-        - matchLabels:
-            name: "cilium-envoy"
-      toPorts:
+    - toPorts:
         - ports:
             - port: "5055"
               protocol: TCP
+    # - fromEndpoints:
+    #     - matchLabels:
+    #         name: "cilium-envoy"
+    #   toPorts:
+    #     - ports:
+    #         - port: "5055"
+    #           protocol: TCP

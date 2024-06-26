@@ -7,13 +7,13 @@ spec:
     matchLabels:
       app: jellyseerr
   egress:
-    - toEntities:
+    - toEndpoints:
         - matchLabels:
             app: sonarr
-    - toEntities:
+    - toEndpoints:
         - matchLabels:
             app: radarr
-    - toEntities:
+    - toEndpoints:
         - matchLabels:
             app: jellyfin
     - toEntities:

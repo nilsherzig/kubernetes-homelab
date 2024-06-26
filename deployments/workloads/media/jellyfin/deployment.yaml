@@ -26,8 +26,8 @@ spec:
               value: "1000"
             - name: TZ
               value: "Europe/Berlin"
-            - name: JELLYFIN_PublishedServerUrl
-              value: "https://stream.nilsherzig.com"
+            # - name: JELLYFIN_PublishedServerUrl
+            #   value: "https://stream.nilsherzig.com"
             - name: JELLYFIN_CONFIG_DIR
               value: "/config"
           ports:

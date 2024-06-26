@@ -15,6 +15,26 @@ spec:
         app: gluetun
     spec:
       containers:
+        - name: curl-container
+          image: curlimages/curl
+          command:
+            [
+              "sh",
+              "-c",
+              "while true; do curl -x socks5://test:test@localhost:1080 http://example.com; sleep 5; done",
+            ]
+
+        - name: socks5
+          image: serjs/go-socks5-proxy
+          ports:
+            - containerPort: 1080
+          env:
+            - name: PROXY_USER
+              value: "test"
+            - name: PROXY_PASSWORD
+              value: "test"
+
+      initContainers:
         - name: gluetun
           image: ghcr.io/qdm12/gluetun # Optionally you can use the "qmcgaw/gluetun" image as well as specify what version of Gluetun you desire
           imagePullPolicy: Always
@@ -29,24 +49,9 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 5
 
-          ports:
-            - containerPort: 8888
-
           env:
             - name: FIREWALL_INPUT_PORTS
               value: "8888"
-
-            - name: HTTPPROXY
-              value: "on"
-
-            - name: HTTPPROXY_USER
-              value: "test"
-
-            - name: HTTPPROXY_PASSWORD
-              value: "test"
-
-            - name: HTTPPROXY_LOG
-              value: "on"
 
             - name: TZ
               value: "Europe/Berlin"

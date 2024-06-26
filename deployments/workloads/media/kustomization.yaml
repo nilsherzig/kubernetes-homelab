@@ -5,12 +5,13 @@ resources:
   # - ./qbittorrent/
   # - ./radarr/
   # - ./sonarr/
-  # - ./gluetun/deployment.yaml
+  - ./gluetun/deployment.yaml
   # - ./gluetun/service.yaml
 # secretGenerator:
 #   - name: wireguard-private-key-qbittorrent
 #     envs:
 #       - .env.wireguard-private-key
+#
 #
 # patches:
 #   # inject the gluetun sidecar into all deployments with the label gluetun=true
@@ -18,3 +19,7 @@ resources:
 #     target:
 #       kind: Deployment
 #       labelSelector: gluetun=true
+#
+#
+#       CURRENT SOLUTION
+#       gluetun deployment hosted eigenen socks5 proxy, zu welchem sich die hosts dann verbinden können

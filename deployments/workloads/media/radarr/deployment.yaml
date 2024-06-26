@@ -4,6 +4,7 @@ metadata:
   name: radarr-deployment
   labels:
     app: radarr
+    prowlarr: "allow"
 spec:
   replicas: 1
   selector:

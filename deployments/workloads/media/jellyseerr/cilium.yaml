@@ -8,6 +8,15 @@ spec:
       app: jellyseerr
   egress:
     - toEntities:
+        - matchLabels:
+            app: sonarr
+    - toEntities:
+        - matchLabels:
+            app: radarr
+    - toEntities:
+        - matchLabels:
+            app: jellyfin
+    - toEntities:
         - cluster
       toPorts:
         - ports:

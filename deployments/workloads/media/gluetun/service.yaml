@@ -9,3 +9,6 @@ spec:
     - protocol: TCP
       port: 1080
       targetPort: 1080
+    - protocol: UDP
+      port: 1080
+      targetPort: 1080

@@ -2,7 +2,7 @@ resources:
   - ./jellyfin/
   # - ./jellyseerr/
   # - ./prowlarr/
-  - ./qbittorrent/
+  # - ./qbittorrent/
   # - ./radarr/
   # - ./sonarr/
   - ./gluetun/deployment.yaml

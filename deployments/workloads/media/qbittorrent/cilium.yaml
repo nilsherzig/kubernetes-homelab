@@ -24,7 +24,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            - qbittorrent: "allow"
+            qbittorrent: "allow"
     - toPorts:
         - ports:
             - port: "8080"

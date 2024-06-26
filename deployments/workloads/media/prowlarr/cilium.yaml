@@ -47,7 +47,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            - prowlarr: "allow"
+            prowlarr: "allow"
     - toPorts:
         - ports:
             - port: "9696"

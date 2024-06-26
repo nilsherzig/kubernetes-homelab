@@ -4,6 +4,8 @@ metadata:
   name: sonarr-deployment
   labels:
     app: sonarr
+    prowlarr: "allow"
+    qbittorrent: "allow"
 spec:
   replicas: 1
   selector:

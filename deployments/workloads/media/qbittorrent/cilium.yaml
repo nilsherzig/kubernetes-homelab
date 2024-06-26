@@ -24,9 +24,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            - app: prowlarr
-            - app: sonarr
-            - app: radarr
+            - qbittorrent: "allow"
     - toPorts:
         - ports:
             - port: "8080"

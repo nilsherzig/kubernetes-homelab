@@ -47,8 +47,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            - app: radarr
-            - app: sonarr
+            - prowlarr: "allow"
     - toPorts:
         - ports:
             - port: "9696"

@@ -1,7 +1,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "qbittorrent outgoing"
+  name: "qbittorrent-outgoing"
 spec:
   endpointSelector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "qbittorrent api access"
+  name: "qbittorrent-api-access"
 spec:
   endpointSelector:
     matchLabels:

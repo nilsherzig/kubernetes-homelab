@@ -1,7 +1,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "prowlarr outgoing world"
+  name: "prowlarr-outgoing-world"
 spec:
   endpointSelector:
     matchLabels:
@@ -23,7 +23,7 @@ spec:
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "prowlarr api access"
+  name: "prowlarr-api-access"
 spec:
   endpointSelector:
     matchLabels:

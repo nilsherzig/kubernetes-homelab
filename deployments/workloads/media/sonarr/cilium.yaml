@@ -7,8 +7,8 @@ spec:
     matchLabels:
       app: sonarr
   egress:
-    - toEntities:
-        - world
+    # - toEntities:
+    #     - world
     - toPorts:
         - ports:
             # - port: "53"

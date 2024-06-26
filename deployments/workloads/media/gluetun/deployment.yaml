@@ -15,15 +15,15 @@ spec:
         app: gluetun
     spec:
       containers:
-        - name: curl-container
-          image: curlimages/curl
-          command:
-            [
-              "sh",
-              "-c",
-              "while true; do curl -s -x socks5://localhost:1080 https://am.i.mullvad.net/connected; sleep 60; done",
-            ]
-            # while true; do curl -v -x socks5://gluetun.media.svc.cluster.local:1080 https://am.i.mullvad.net/connected; sleep 1; done
+        # - name: curl-container
+        #   image: curlimages/curl
+        #   command:
+        #     [
+        #       "sh",
+        #       "-c",
+        #       "while true; do curl -s -x socks5://localhost:1080 https://am.i.mullvad.net/connected; sleep 60; done",
+        #     ]
+        #     # while true; do curl -v -x socks5://gluetun.media.svc.cluster.local:1080 https://am.i.mullvad.net/connected; sleep 1; done
 
         - name: socks5
           image: serjs/go-socks5-proxy

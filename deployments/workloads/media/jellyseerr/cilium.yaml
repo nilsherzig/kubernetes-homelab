@@ -11,10 +11,24 @@ spec:
         - world
     - toPorts:
         - ports:
-            # - port: "53"
-            #   protocol: ANY
             - port: "443"
               protocol: TCP
+---
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "jellyseerr-cluster"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: jellyseerr
+  egress:
+    - toEntities:
+        - cluster
+    - toPorts:
+        - ports:
+            - port: "53"
+              protocol: ANY
 ---
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy

@@ -16,6 +16,7 @@ spec:
     - toEndpoints:
         - matchLabels:
             app: jellyfin
+
     - toEntities:
         - cluster
       toPorts:

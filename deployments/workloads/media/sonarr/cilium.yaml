@@ -20,10 +20,7 @@ spec:
             - port: "443"
               protocol: TCP
   ingress:
-    - fromEndpoints:
-        - matchLabels:
-            sonarr: "allow"
-      toPorts:
+    - toPorts:
         - ports:
             - port: "8989"
               protocol: TCP

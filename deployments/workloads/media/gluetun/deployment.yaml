@@ -54,7 +54,7 @@ spec:
 
           env:
             - name: FIREWALL_INPUT_PORTS
-              value: "8888"
+              value: "1080"
 
             - name: TZ
               value: "Europe/Berlin"

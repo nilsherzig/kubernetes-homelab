@@ -18,9 +18,6 @@ spec:
   endpointSelector:
     matchLabels:
       app: qbittorrent
-  egress:
-    - toEntities:
-        - world
   ingress:
     - fromEndpoints:
         - matchLabels:

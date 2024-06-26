@@ -1,23 +1,33 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "radarr"
+  name: "radarr-outgoing"
 spec:
   endpointSelector:
     matchLabels:
       app: radarr
   egress:
+    - toEntities:
+        - world
     - toPorts:
         - ports:
-            - port: "8080"
+            # - port: "53"
+            #   protocol: ANY
+            - port: "443"
               protocol: TCP
-            - port: "9696"
-              protocol: TCP
-            - port: "53"
-              protocol: ANY
-            - port: "1080"
-              protocol: ANY
+---
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "radarr-api-access"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: radarr
   ingress:
+    - fromEndpoints:
+        - matchLabels:
+            radarr: "allow"
     - toPorts:
         - ports:
             - port: "7878"

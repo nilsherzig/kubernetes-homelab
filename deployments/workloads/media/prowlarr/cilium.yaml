@@ -15,6 +15,22 @@ spec:
               protocol: ANY
             - port: "443"
               protocol: TCP
+---
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "prowlarr-outgoing-cluster"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: prowlarr
+  egress:
+    - toEntities:
+        - cluster
+    - toPorts:
+        - ports:
+            - port: "53"
+              protocol: ANY
             - port: "8989"
               protocol: TCP
             - port: "7878"

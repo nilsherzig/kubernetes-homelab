@@ -9,8 +9,6 @@ spec:
   egress:
     - toPorts:
         - ports:
-            - port: "1900"
-              protocol: UDP
             - port: "53"
               protocol: ANY
             - port: "443"

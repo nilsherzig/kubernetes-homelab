@@ -6,11 +6,11 @@ spec:
   endpointSelector:
     matchLabels:
       app: qbittorrent
-  egress:
-    - toPorts:
-        - ports:
-            - port: "1080"
-              protocol: ANY
+  # egress:
+  #   - toPorts:
+  #       - ports:
+  #           - port: "1080"
+  #             protocol: ANY
   ingress:
     - toPorts:
         - ports:

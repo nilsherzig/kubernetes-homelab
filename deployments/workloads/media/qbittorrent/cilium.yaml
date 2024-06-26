@@ -1,20 +1,35 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "qbittorrent"
+  name: "qbittorrent outgoing"
 spec:
   endpointSelector:
     matchLabels:
       app: qbittorrent
-  # egress:
-  #   - toPorts:
-  #       - ports:
-  #           - port: "1080"
-  #             protocol: ANY
+  egress:
+    - toEntities:
+        - world
+---
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "qbittorrent api access"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: qbittorrent
+  egress:
+    - toEntities:
+        - world
   ingress:
+    - fromEntities:
+        - matchLabels:
+            - app: prowlarr
+            - app: sonarr
+            - app: radarr
     - toPorts:
         - ports:
             - port: "8080"
               protocol: TCP
-            - port: "6881"
-              protocol: ANY
+            # - port: "6881"
+            #   protocol: ANY

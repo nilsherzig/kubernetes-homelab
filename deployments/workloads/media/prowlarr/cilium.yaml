@@ -1,23 +1,38 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "prowlarr"
+  name: "prowlarr outgoing world"
 spec:
   endpointSelector:
     matchLabels:
       app: prowlarr
   egress:
+    - toEntities:
+        - world
     - toPorts:
         - ports:
-            - port: "1080"
-              protocol: ANY
             - port: "53"
               protocol: ANY
+            - port: "443"
+              protocol: TCP
             - port: "8989"
               protocol: TCP
             - port: "7878"
               protocol: TCP
+---
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "prowlarr api access"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: prowlarr
   ingress:
+    - fromEntities:
+        - matchLabels:
+            - app: radarr
+            - app: sonarr
     - toPorts:
         - ports:
             - port: "9696"

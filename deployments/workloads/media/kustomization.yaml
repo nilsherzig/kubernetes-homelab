@@ -3,8 +3,8 @@ resources:
   # - ./jellyseerr/
   - ./prowlarr/
   - ./qbittorrent/
-  # - ./radarr/
-  # - ./sonarr/
+  - ./radarr/
+  - ./sonarr/
   - ./gluetun/deployment.yaml
   - ./gluetun/service.yaml
 # secretGenerator:

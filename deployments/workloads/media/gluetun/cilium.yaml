@@ -1,0 +1,18 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "gluetun"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: gluetun
+  egress:
+    - toPorts:
+        - ports:
+            - port: "51820"
+              protocol: UDP
+  ingress:
+    - toPorts:
+        - ports:
+            - port: "1080"
+              protocol: ANY

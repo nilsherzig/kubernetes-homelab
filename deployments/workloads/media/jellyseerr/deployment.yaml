@@ -4,8 +4,6 @@ metadata:
   name: jellyseerr-deployment
   labels:
     app: jellyseerr
-    sonarr: "allow"
-    radarr: "allow"
 spec:
   replicas: 1
   selector:
@@ -15,6 +13,8 @@ spec:
     metadata:
       labels:
         app: jellyseerr
+        sonarr: "allow"
+        radarr: "allow"
     spec:
       securityContext:
         fsGroup: 1000

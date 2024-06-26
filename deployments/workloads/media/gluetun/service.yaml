@@ -8,7 +8,7 @@ spec:
   ports:
     - protocol: TCP
       port: 1080
-      targetPort: 1080
+      targetPort: socks5
     - protocol: UDP
       port: 1080
-      targetPort: 1080
+      targetPort: socks5

@@ -29,6 +29,7 @@ spec:
           image: serjs/go-socks5-proxy
           ports:
             - containerPort: 1080
+              name: socks5
           env:
             # - name: PROXY_USER
             #   value: "test"

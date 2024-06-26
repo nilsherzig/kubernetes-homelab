@@ -53,6 +53,9 @@ spec:
             periodSeconds: 5
 
           env:
+            - name: DOT_PRIVATE_ADDRESS
+              value: "10.0.0.0/6"
+
             - name: FIREWALL_INPUT_PORTS
               value: "1080"
 

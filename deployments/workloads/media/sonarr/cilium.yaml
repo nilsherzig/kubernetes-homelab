@@ -1,34 +1,29 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "sonarr-outgoing"
+  name: "sonarr"
 spec:
   endpointSelector:
     matchLabels:
       app: sonarr
   egress:
     - toEntities:
+        - cluster
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: ANY
+    - toEntities:
         - world
       toPorts:
         - ports:
-            # - port: "53"
-            #   protocol: ANY
             - port: "443"
               protocol: TCP
----
-apiVersion: "cilium.io/v2"
-kind: CiliumNetworkPolicy
-metadata:
-  name: "sonarr-api-access"
-spec:
-  endpointSelector:
-    matchLabels:
-      app: sonarr
   ingress:
     - fromEndpoints:
         - matchLabels:
             sonarr: "allow"
-    - toPorts:
+      toPorts:
         - ports:
             - port: "8989"
               protocol: TCP

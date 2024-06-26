@@ -1,23 +1,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "jellyseerr-outgoing"
-spec:
-  endpointSelector:
-    matchLabels:
-      app: jellyseerr
-  egress:
-    - toEntities:
-        - world
-    - toPorts:
-        - ports:
-            - port: "443"
-              protocol: TCP
----
-apiVersion: "cilium.io/v2"
-kind: CiliumNetworkPolicy
-metadata:
-  name: "jellyseerr-cluster"
+  name: "jellyseerr"
 spec:
   endpointSelector:
     matchLabels:
@@ -25,24 +9,21 @@ spec:
   egress:
     - toEntities:
         - cluster
-    - toPorts:
+      toPorts:
         - ports:
             - port: "53"
               protocol: ANY
----
-apiVersion: "cilium.io/v2"
-kind: CiliumNetworkPolicy
-metadata:
-  name: "jellyseerr-webui-access"
-spec:
-  endpointSelector:
-    matchLabels:
-      app: jellyseerr
+    - toEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
   ingress:
     - fromEndpoints:
         - matchLabels:
             name: "cilium-envoy"
-    - toPorts:
+      toPorts:
         - ports:
             - port: "5055"
               protocol: TCP

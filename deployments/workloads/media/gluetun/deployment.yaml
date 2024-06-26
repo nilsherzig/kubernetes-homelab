@@ -38,6 +38,7 @@ spec:
         - name: gluetun
           image: ghcr.io/qdm12/gluetun # Optionally you can use the "qmcgaw/gluetun" image as well as specify what version of Gluetun you desire
           imagePullPolicy: Always
+          restartPolicy: Always
 
           securityContext:
             capabilities:

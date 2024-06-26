@@ -4,7 +4,6 @@ metadata:
   name: qbittorrent-deployment
   labels:
     app: qbittorrent
-    gluetun: "true"
 spec:
   replicas: 1
   selector:

@@ -25,6 +25,11 @@ spec:
             dns:
               - matchPattern: "*"
     - toFQDNs:
+        - matchName: www.omdbapi.com
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
         - matchName: api.opensubtitles.com
       toPorts:
         - ports:

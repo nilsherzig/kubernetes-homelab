@@ -5,7 +5,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      sonarr: ""
+      app: sonarr
   ingress:
     - fromEndpoints:
         - matchLabels:

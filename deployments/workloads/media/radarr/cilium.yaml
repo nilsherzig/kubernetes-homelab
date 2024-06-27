@@ -25,6 +25,11 @@ spec:
         - ports:
             - port: "8989"
   egress:
+    - toEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "443"
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

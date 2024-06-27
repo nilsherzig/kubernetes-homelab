@@ -46,4 +46,4 @@ spec:
             app: qbittorrent
       toPorts:
         - ports:
-            - port: "8989"
+            - port: "8080"

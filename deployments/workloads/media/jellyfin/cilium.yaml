@@ -24,3 +24,13 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
+    - toFQDNs:
+        - matchName: api.opensubtitles.com
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
+        - matchName: api.themoviedb.org
+      toPorts:
+        - ports:
+            - port: "443"

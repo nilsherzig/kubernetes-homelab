@@ -1,29 +1,49 @@
-apiVersion: "cilium.io/v2"
+apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: "sonarr"
+  name: sonarr
 spec:
   endpointSelector:
     matchLabels:
-      app: sonarr
-  egress:
-    - toEntities:
-        - cluster
-      toPorts:
-        - ports:
-            - port: "53"
-              protocol: ANY
-    - toEntities:
-        - world
-      toPorts:
-        - ports:
-            - port: "443"
-              protocol: TCP
+      sonarr: ""
   ingress:
     - fromEndpoints:
         - matchLabels:
-            sonarr: "allow"
+            app: jellyseerr
       toPorts:
         - ports:
             - port: "8989"
-              protocol: TCP
+    - fromEndpoints:
+        - matchLabels:
+            app: prowlarr
+      toPorts:
+        - ports:
+            - port: "8989"
+    - fromEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "8989"
+  egress:
+    - toFQDNs:
+        - matchName: api.opensubtitles.com
+      toPorts:
+        - ports:
+            - port: "443"
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+    - toEndpoints:
+        - matchLabels:
+            app: qbittorrent
+      toPorts:
+        - ports:
+            - port: "8989"

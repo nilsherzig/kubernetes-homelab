@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: jellyseerr
-        # sonarr: "allow"
+        sonarr: "allow"
         radarr: "allow"
     spec:
       securityContext:

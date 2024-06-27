@@ -25,6 +25,11 @@ spec:
             dns:
               - matchPattern: "*"
     - toFQDNs:
+        - matchName: image.tmdb.org
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
         - matchName: www.omdbapi.com
       toPorts:
         - ports:

@@ -7,11 +7,23 @@ spec:
     matchLabels:
       app: radarr
   ingress:
-    - fromEntities:
-        - cluster
+    - fromEndpoints:
+        - matchLabels:
+            app: jellyseerr
       toPorts:
         - ports:
             - port: "7878"
+    - fromEndpoints:
+        - matchLabels:
+            app: prowlarr
+      toPorts:
+        - ports:
+            - port: "7878"
+    - fromEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "8989"
   egress:
     - toEndpoints:
         - matchLabels:
@@ -24,13 +36,15 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
-    - toServices:
-        - k8sServiceSelector:
-            selector:
-              matchLabels:
-                app: prowlarr
-    - toServices:
-        - k8sServiceSelector:
-            selector:
-              matchLabels:
-                app: qbittorrent
+    - toEndpoints:
+        - matchLabels:
+            app: qbittorrent
+      toPorts:
+        - ports:
+            - port: "8080"
+    - toEndpoints:
+        - matchLabels:
+            app: prowlarr
+      toPorts:
+        - ports:
+            - port: "8989"

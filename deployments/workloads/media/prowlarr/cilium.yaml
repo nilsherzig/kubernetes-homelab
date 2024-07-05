@@ -47,8 +47,15 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            prowlarr: "allow"
-    - toPorts:
+            prowlarr: "radarr"
+      toPorts:
+        - ports:
+            - port: "9696"
+              protocol: TCP
+    - fromEndpoints:
+        - matchLabels:
+            prowlarr: "sonarr"
+      toPorts:
         - ports:
             - port: "9696"
               protocol: TCP

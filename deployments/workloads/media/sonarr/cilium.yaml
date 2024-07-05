@@ -52,3 +52,9 @@ spec:
       toPorts:
         - ports:
             - port: "8080"
+    - toEndpoints:
+        - matchLabels:
+            app: prowlarr
+      toPorts:
+        - ports:
+            - port: "8989"

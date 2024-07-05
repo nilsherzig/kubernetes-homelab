@@ -52,4 +52,4 @@ spec:
             app: prowlarr
       toPorts:
         - ports:
-            - port: "8989"
+            - port: "9696"

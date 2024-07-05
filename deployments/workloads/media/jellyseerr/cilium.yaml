@@ -1,58 +1,64 @@
-apiVersion: "cilium.io/v2"
+apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: jellyseerr
+  name: jellyfin
 spec:
   endpointSelector:
     matchLabels:
-      app: jellyseerr
-  egress:
-    - toEndpoints:
-        - matchLabels:
-            app: sonarr
-          toPorts:
-            - ports:
-                - port: "8989"
-                  protocol: TCP
-
-    - toEndpoints:
-        - matchLabels:
-            app: radarr
-          toPorts:
-            - ports:
-                - port: "7878"
-                  protocol: TCP
-
-    - toEndpoints:
-        - matchLabels:
-            app: jellyfin
-          toPorts:
-            - ports:
-                - port: "8096"
-                  protocol: TCP
-
-    - toEntities:
+      app: jellyfin
+  ingress:
+    - fromEntities:
         - cluster
       toPorts:
         - ports:
+            - port: "8096"
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app: jellyfin
+      toPorts:
+        - ports:
+            - port: "8096"
+    - toEndpoints:
+        - matchLabels:
+            app: radarr
+      toPorts:
+        - ports:
+            - port: "7878"
+    - toEndpoints:
+        - matchLabels:
+            app: sonarr
+      toPorts:
+        - ports:
+            - port: "8989"
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
             - port: "53"
-              protocol: ANY
-
-    - toEntities:
-        - world
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+    - toFQDNs:
+        - matchName: image.tmdb.org
       toPorts:
         - ports:
             - port: "443"
-              protocol: TCP
-  ingress:
-    - toPorts:
+    - toFQDNs:
+        - matchName: www.omdbapi.com
+      toPorts:
         - ports:
-            - port: "5055"
-              protocol: TCP
-    # - fromEndpoints:
-    #     - matchLabels:
-    #         name: "cilium-envoy"
-    #   toPorts:
-    #     - ports:
-    #         - port: "5055"
-    #           protocol: TCP
+            - port: "443"
+    - toFQDNs:
+        - matchName: api.opensubtitles.com
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
+        - matchName: api.themoviedb.org
+      toPorts:
+        - ports:
+            - port: "443"

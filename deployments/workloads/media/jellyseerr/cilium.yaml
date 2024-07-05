@@ -1,17 +1,17 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: jellyfin
+  name: jellyseerr
 spec:
   endpointSelector:
     matchLabels:
-      app: jellyfin
+      app: jellyseerr
   ingress:
     - fromEntities:
         - cluster
       toPorts:
         - ports:
-            - port: "8096"
+            - port: "5055"
   egress:
     - toEndpoints:
         - matchLabels:

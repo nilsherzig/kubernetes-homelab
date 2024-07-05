@@ -12,13 +12,13 @@ spec:
             app: sonarr
       toPorts:
         - ports:
-            - port: "7878"
+            - port: "8989"
     - fromEndpoints:
         - matchLabels:
             app: radarr
       toPorts:
         - ports:
-            - port: "7878"
+            - port: "8989"
     - fromEntities:
         - world
       toPorts:

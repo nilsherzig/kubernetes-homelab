@@ -50,7 +50,7 @@ spec:
         - ports:
             - port: "443"
     - toFQDNs:
-        - matchName: "*.mirror.jellyfin.org"
+        - matchPattern: "*.mirror.jellyfin.org"
       toPorts:
         - ports:
             - port: "443"

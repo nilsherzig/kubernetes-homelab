@@ -44,3 +44,8 @@ spec:
       toPorts:
         - ports:
             - port: "443"
+    - toFQDNs:
+        - matchName: repo.jellyfin.org
+      toPorts:
+        - ports:
+            - port: "443"

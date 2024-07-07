@@ -1,5 +1,4 @@
 resources:
-  - ./bazarr/
   - ./jellyfin/
   - ./jellyseerr/
   - ./prowlarr/

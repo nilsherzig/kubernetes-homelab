@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bazarr-deployment
+  labels:
+    app: bazarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bazarr
+  template:
+    metadata:
+      labels:
+        app: bazarr
+    spec:
+      containers:
+        - name: bazarr
+          image: lscr.io/linuxserver/bazarr:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+          ports:
+            - containerPort: 6767
+          volumeMounts:
+            - name: nfs-media
+              mountPath: /media/shows
+              subPath: shows
+            - name: nfs-media
+              mountPath: /media/movies
+              subPath: movies
+            - name: nfs-configs
+              mountPath: /config
+              subPath: bazarr
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+      volumes:
+        - name: nfs-media
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/data
+            readOnly: false
+        - name: nfs-configs
+          nfs:
+            server: 10.10.10.146
+            path: /mnt/bigdata/kubernetes/media/configs
+            readOnly: false

@@ -1,7 +1,7 @@
 resources:
   - ./jellyfin/
-  # - ./jellyseerr/
-  # - ./prowlarr/
-  # - ./qbittorrent/
-  # - ./radarr/
-  # - ./sonarr/
+  - ./jellyseerr/
+  - ./prowlarr/
+  - ./qbittorrent/
+  - ./radarr/
+  - ./sonarr/

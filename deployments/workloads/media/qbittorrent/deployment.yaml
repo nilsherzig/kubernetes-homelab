@@ -48,9 +48,9 @@ spec:
       volumes:
         - name: nfs-media
           nfs:
-            server: 10.10.10.146
+            server: truenas
             path: /mnt/bigdata/kubernetes/media/data
         - name: nfs-configs
           nfs:
-            server: 10.10.10.146
+            server: truenas
             path: /mnt/bigdata/kubernetes/media/configs

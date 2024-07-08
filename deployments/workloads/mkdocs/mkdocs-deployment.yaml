@@ -32,6 +32,6 @@ spec:
       volumes:
         - name: nfs-docs
           nfs:
-            server: 10.10.10.146
+            server: truenas
             path: /mnt/bigdata/kubernetes/mkdocs
             readOnly: true

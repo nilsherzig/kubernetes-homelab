@@ -21,7 +21,7 @@ spec:
             - name: LANGS
               value: "en_GB,de_DE"
             - name: INSTALL_BOOK_AND_ADVANCED_HTML_OPS
-              value: false
+              value: "false"
           ports:
             - containerPort: 8080
           resources:

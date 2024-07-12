@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../workloads/speedtest/
   - ../../workloads/fileshare/
+  - ../../workloads/stirling-pdf/
 namePrefix: staging-
 patches:
   - path: ./speedtest_change_domain.yaml

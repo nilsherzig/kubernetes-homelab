@@ -1,0 +1,13 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "stirling"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: stirling
+  ingress:
+    - toPorts:
+        - ports:
+            - port: "8080"
+              protocol: TCP

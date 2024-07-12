@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stirlign
+  labels:
+    app: stirlign
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stirlign
+  template:
+    metadata:
+      labels:
+        app: stirlign
+    spec:
+      containers:
+        - name: stirlign
+          image: frooodle/s-pdf:latest
+          env:
+            - name: LANGS
+              value: "en_GB,de_DE"
+            - name: INSTALL_BOOK_AND_ADVANCED_HTML_OPS
+              value: false
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "3000Mi"
+              cpu: "3000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: stirlign
+              mountPath: /configs
+              subPath: extraConfigs
+            - name: sirling
+              mountPath: /usr/share/tessdata
+              subPath: trainingData
+      volumes:
+        - name: stirlign
+          nfs:
+            server: truenas
+            path: /mnt/bigdata/kubernetes/stirlign
+            readOnly: false

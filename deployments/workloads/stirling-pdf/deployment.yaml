@@ -32,10 +32,10 @@ spec:
               memory: "500Mi"
               cpu: "500m"
           volumeMounts:
-            - name: stirlign
+            - name: stirling
               mountPath: /configs
               subPath: extraConfigs
-            - name: stirlign
+            - name: stirling
               mountPath: /usr/share/tessdata
               subPath: trainingData
       volumes:

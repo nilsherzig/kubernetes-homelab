@@ -4,7 +4,7 @@ metadata:
   name: stirling
 spec:
   selector:
-    app: sitrling
+    app: stirling
   ports:
     - protocol: TCP
       port: 80

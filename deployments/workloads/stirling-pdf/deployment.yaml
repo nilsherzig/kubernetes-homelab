@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: stirlign
+  name: stirling
   labels:
-    app: stirlign
+    app: stirling
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stirlign
+      app: stirling
   template:
     metadata:
       labels:
-        app: stirlign
+        app: stirling
     spec:
       containers:
-        - name: stirlign
+        - name: stirling
           image: frooodle/s-pdf:latest
           env:
             - name: LANGS
@@ -39,7 +39,7 @@ spec:
               mountPath: /usr/share/tessdata
               subPath: trainingData
       volumes:
-        - name: stirlign
+        - name: stirling
           nfs:
             server: truenas
             path: /mnt/bigdata/kubernetes/stirling

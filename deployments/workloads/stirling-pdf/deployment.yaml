@@ -35,7 +35,7 @@ spec:
             - name: stirlign
               mountPath: /configs
               subPath: extraConfigs
-            - name: sirling
+            - name: stirling
               mountPath: /usr/share/tessdata
               subPath: trainingData
       volumes:

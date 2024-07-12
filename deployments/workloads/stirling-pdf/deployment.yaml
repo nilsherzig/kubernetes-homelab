@@ -42,5 +42,5 @@ spec:
         - name: stirlign
           nfs:
             server: truenas
-            path: /mnt/bigdata/kubernetes/stirlign
+            path: /mnt/bigdata/kubernetes/stirling
             readOnly: false

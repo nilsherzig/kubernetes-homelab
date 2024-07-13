@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filebrowser
+  labels:
+    app: filebrowser
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: filebrowser
+  template:
+    metadata:
+      labels:
+        app: filebrowser
+    spec:
+      containers:
+        - name: filebrowser
+          image: filebrowser/filebrowser:s6
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nfs-media
+              mountPath: /srv/media-data
+            - name: nfs-configs
+              mountPath: /database
+              subPath: filebrowser/database
+            - name: nfs-configs
+              mountPath: /config
+              subPath: filebrowser/config
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+      volumes:
+        - name: nfs-media
+          nfs:
+            server: truenas
+            path: /mnt/bigdata/kubernetes/media/data
+            readOnly: false
+        - name: nfs-configs
+          nfs:
+            server: truenas
+            path: /mnt/bigdata/kubernetes/media/configs
+            readOnly: false

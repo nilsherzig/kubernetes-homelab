@@ -25,7 +25,7 @@ spec:
             - name: TZ
               value: "Europe/Berlin"
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           volumeMounts:
             - name: nfs-media
               mountPath: /srv/media-data

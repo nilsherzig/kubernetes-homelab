@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: filebrowser
-          image: filebrowser/filebrowser:s6
+          image: filebrowser/filebrowser
           env:
             - name: PUID
               value: "1000"
@@ -25,7 +25,7 @@ spec:
             - name: TZ
               value: "Europe/Berlin"
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           volumeMounts:
             - name: nfs-media
               mountPath: /srv/media-data

@@ -36,6 +36,7 @@ spec:
           ports:
             - containerPort: 1900
             - containerPort: 5353
+            - containerPort: 32400
           volumeMounts:
             - name: nfs-media
               mountPath: /media/shows

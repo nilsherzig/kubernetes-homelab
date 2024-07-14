@@ -45,12 +45,12 @@ spec:
         - ports:
             - port: "443"
     - toFQDNs:
-        - matchName: repo.plex.org
+        - matchName: plex.tv
       toPorts:
         - ports:
             - port: "443"
     - toFQDNs:
-        - matchPattern: "*.mirror.plex.org"
+        - matchPattern: "*.plex.tv"
       toPorts:
         - ports:
             - port: "443"

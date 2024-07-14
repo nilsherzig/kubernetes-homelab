@@ -25,6 +25,7 @@ spec:
       toPorts:
         - ports:
             - port: "1900"
+              protocol: UDP
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

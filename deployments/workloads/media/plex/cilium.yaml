@@ -55,7 +55,7 @@ spec:
         - matchPattern: "assets.fanart.tv"
       toPorts:
         - ports:
-            - port: "443"
+            - port: "80"
     - toFQDNs:
         - matchPattern: "plex.tv"
       toPorts:
@@ -63,6 +63,11 @@ spec:
             - port: "443"
     - toFQDNs:
         - matchPattern: "pbsub.plex.tv"
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
+        - matchPattern: "image.tmdb.org"
       toPorts:
         - ports:
             - port: "443"

@@ -61,3 +61,8 @@ spec:
       toPorts:
         - ports:
             - port: "443"
+    - toFQDNs:
+        - matchPattern: "pbsub.plex.tv"
+      toPorts:
+        - ports:
+            - port: "443"

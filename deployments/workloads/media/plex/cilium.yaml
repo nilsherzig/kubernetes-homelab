@@ -8,10 +8,17 @@ spec:
       app: plex
   ingress:
     - fromEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "32400"
+              protocol: TCP
+    - fromEntities:
         - cluster
       toPorts:
         - ports:
-            - port: "8096"
+            - port: "32400"
+              protocol: TCP
   egress:
     - toEndpoints:
         - matchLabels:

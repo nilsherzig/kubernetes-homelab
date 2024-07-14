@@ -37,32 +37,27 @@ spec:
             dns:
               - matchPattern: "*"
     - toFQDNs:
-        - matchName: image.tmdb.org
+        - matchPattern: "images.plex.tv"
       toPorts:
         - ports:
             - port: "443"
     - toFQDNs:
-        - matchName: www.omdbapi.com
+        - matchPattern: "tvthemes.plexapp.com"
       toPorts:
         - ports:
             - port: "443"
     - toFQDNs:
-        - matchName: api.opensubtitles.com
+        - matchPattern: "downloads.plex.tv"
       toPorts:
         - ports:
             - port: "443"
     - toFQDNs:
-        - matchName: api.themoviedb.org
+        - matchPattern: "assets.fanart.tv"
       toPorts:
         - ports:
             - port: "443"
     - toFQDNs:
-        - matchName: plex.tv
-      toPorts:
-        - ports:
-            - port: "443"
-    - toFQDNs:
-        - matchPattern: "*.plex.tv"
+        - matchPattern: "plex.tv"
       toPorts:
         - ports:
             - port: "443"

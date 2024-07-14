@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex-deployment
+  labels:
+    app: plex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plex
+  template:
+    metadata:
+      labels:
+        app: plex
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: plex
+          image: lscr.io/linuxserver/plex:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Berlin"
+            - name: VERSION
+              value: "docker"
+            - name: PLEX_CLAIM
+              value:
+                fromSecret:
+                  secretKeyRef:
+                    name: plex-claim
+                    key: claim
+          ports:
+            - containerPort: 1900
+            - containerPort: 5353
+          volumeMounts:
+            - name: nfs-media
+              mountPath: /media/shows
+              subPath: shows
+            - name: nfs-media
+              mountPath: /media/movies
+              subPath: movies
+            - name: nfs-configs
+              mountPath: /config
+              subPath: plex
+          resources:
+            limits:
+              memory: "5000Mi"
+              cpu: "3000m"
+            requests:
+              memory: "5000Mi"
+              cpu: "2000m"
+      volumes:
+        - name: nfs-media
+          nfs:
+            server: truenas
+            path: /mnt/bigdata/kubernetes/media/data
+            readOnly: false
+        - name: nfs-configs
+          nfs:
+            server: truenas
+            path: /mnt/bigdata/kubernetes/media/configs
+            readOnly: false

@@ -1,0 +1,56 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: plex
+spec:
+  endpointSelector:
+    matchLabels:
+      app: plex
+  ingress:
+    - fromEntities:
+        - cluster
+      toPorts:
+        - ports:
+            - port: "8096"
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+    - toFQDNs:
+        - matchName: image.tmdb.org
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
+        - matchName: www.omdbapi.com
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
+        - matchName: api.opensubtitles.com
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
+        - matchName: api.themoviedb.org
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
+        - matchName: repo.plex.org
+      toPorts:
+        - ports:
+            - port: "443"
+    - toFQDNs:
+        - matchPattern: "*.mirror.plex.org"
+      toPorts:
+        - ports:
+            - port: "443"

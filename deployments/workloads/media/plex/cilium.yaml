@@ -20,6 +20,11 @@ spec:
             - port: "32400"
               protocol: TCP
   egress:
+    - toCIDRSet:
+        - cidr: 239.255.255.250/32
+      toPorts:
+        - ports:
+            - port: "1900"
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system

@@ -72,3 +72,8 @@ spec:
       toPorts:
         - ports:
             - port: "443"
+    - toFQDNs:
+        - matchPattern: "secure.gravatar.com"
+      toPorts:
+        - ports:
+            - port: "443"

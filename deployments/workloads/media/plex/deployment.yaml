@@ -29,11 +29,10 @@ spec:
             - name: VERSION
               value: "docker"
             - name: PLEX_CLAIM
-              value:
-                fromSecret:
-                  secretKeyRef:
-                    name: plex-claim
-                    key: claim
+              valueFrom:
+                secretKeyRef:
+                  name: plex-claim
+                  key: claim
           ports:
             - containerPort: 1900
             - containerPort: 5353

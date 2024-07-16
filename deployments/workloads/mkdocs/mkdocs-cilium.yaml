@@ -1,16 +1,16 @@
-apiVersion: "cilium.io/v2"
+apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: "mkdocs"
+  name: mkdocs
 spec:
   endpointSelector:
     matchLabels:
       app: mkdocs
-  egress:
-    - toPorts:
-        - ports:
   ingress:
-    - toPorts:
+    - fromCIDRSet:
+        - cidr: 10.10.10.0/24
+      toPorts:
         - ports:
-            - port: "80"
-              protocol: TCP
+            - port: "443"
+  egress:
+    - {}

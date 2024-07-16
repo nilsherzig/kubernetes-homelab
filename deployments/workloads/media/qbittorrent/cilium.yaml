@@ -12,6 +12,11 @@ spec:
       toPorts:
         - ports:
             - port: "8080"
+    - fromCIDRSet:
+        - cidr: 10.10.10.0/24
+      toPorts:
+        - ports:
+            - port: "8080"
   egress:
     - toEntities:
         - world

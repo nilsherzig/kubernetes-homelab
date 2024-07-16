@@ -2,21 +2,21 @@
 
 Welcome to the Kubernetes Homelab repository! Here, my friend and I plan to document our journey of self-hosting a couple of services using Kubernetes. We will be writing tutorials and blog posts about everything we do, and we aim to make it accessible to everyone, regardless of their existing knowledge of Kubernetes.
 
-We strive to follow industry standards for a Kubernetes environment, but please note that this is not a recommended way to run a simple container in your home network. 
+We strive to follow industry standards for a Kubernetes environment, but please note that this is not a recommended way to run a simple container in your home network.
 
 ## Work in Progress
 
 Please keep in mind that this repository is currently a work in progress. We will be adding colors (🍎🧡💚) next to sections to indicate their status (only 💚 sections are trustworthy). We also plan to add a static site generator at some point in the future.
 
-To maintain stability, we aim to keep the `main` branch stable. Any work in progress or incomplete changes will be committed to the `unstable` branch. 
+To maintain stability, we aim to keep the `main` branch stable. Any work in progress or incomplete changes will be committed to the `unstable` branch.
 
 ## Table of contents
 
 ⮬ If you're reading this on GitHub you can use the 🍔 menu on the top left.
 
-## Setup 
+## Setup
 
-### Tools / Software we will use 
+### Tools / Software we will use
 
 - `ArgoCD`: ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes.
 - `Cert Manager`: Cert-manager is a native Kubernetes certificate management controller. It can help with issuing certificates from a variety of sources, such as Let’s Encrypt, HashiCorp Vault, Venafi, a simple signing key pair, or self-signed.
@@ -32,12 +32,12 @@ sudo dnf update                                       # update packages
 sudo dnf copr enable varlad/helix                     # add helix editor repo
 sudo dnf install helix                                # install helix editor
 
-sudo dnf install cockpit                              # install a webinterface on 9090 
+sudo dnf install cockpit                              # install a webinterface on 9090
 sudo systemctl enable --now cockpit
 sed -i 's/root/#root/' /etc/cockpit/disallowed-users
 
 sudo dnf install dnf-automatic                        # install a script which will update dnf for you
-sed -i 's/apply_updates = no/apply_updates = yes/' \ 
+sed -i 's/apply_updates = no/apply_updates = yes/' \
 /etc/dnf/automatic.conf                               # activate auto apply (not just downloads)
 sudo systemctl enable --now dnf-automatic.timer       # start script
 
@@ -61,7 +61,7 @@ export KUBECONFIG=~/.kube/config
 #### If you're using NixOS:
 
 ```nix
-service.k3s.enable = true; 
+service.k3s.enable = true;
 ```
 
 #### Every other Linux distribution:
@@ -77,6 +77,8 @@ kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
+https://docs.cilium.io/en/latest/configuration/argocd-issues/
+
 ### Use Sealed Secrets to provide a Cloudflare DNS Token to your Cluster
 
 Cert manager will use this token to automatically request TLS certificates from let's encrypt.
@@ -89,7 +91,7 @@ If you choose to use Cloudflare, you can get your token at https://dash.cloudfla
 Install sealed secrets:
 
 ```bash
-kubectl apply -f ./argo/sealed_secrets.yaml
+kubectl apply -f ./apps/sealed_secrets.yaml
 ```
 
 And install the local kubeseal cli.
@@ -97,14 +99,14 @@ And install the local kubeseal cli.
 Create the Cloudflare token secret:
 
 ```bash
-kubectl create secret generic secret-name --dry-run=client --from-literal=api-token=[your-cloudflare-token] -o yaml | \
+kubectl create secret generic secret-name --dry-run=client --from-literal=api-token=[your-cloudflare-token] -n cert-manager -o yaml | \
     kubeseal \
       --controller-name=sealed-secrets-controller \
       --controller-namespace=kubeseal \
       --format yaml > ./deployments/base/cloudflare-dns-api.yaml
 ```
 
-This command will create a new encrypted secret and save it to `cloudflare-dns-api.yaml`. It will automatically deployed in the argocd step. 
+This command will create a new encrypted secret and save it to `cloudflare-dns-api.yaml`. It will automatically deployed in the argocd step.
 
 ### Configure Cert Manager
 
@@ -135,6 +137,44 @@ password: `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=
 
 You should now see your application in the ArgoCD web interface. Click on it and press `SYNC` to deploy your application.
 
-### Adding a private repo to argo 
+### Adding a private repo to argo
 
 ./argo/media.yaml is a private repo. To add it to argo you need to create a secret with your git credentials, or add them in the argocd webui. Otherwise argo wont be able to pull commits from the repo.
+
+# Install nginx ingress controller
+
+```bash
+helm upgrade --install ingress-nginx ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --namespace ingress-nginx --create-namespace
+```
+
+## argocd configmap mods 
+
+```bash
+kubectl edit configmap argocd-cm -n argocd
+```
+
+```yaml
+data:
+  resource.customizations: |
+    extensions/Ingress:
+        health.lua: |
+          hs = {}
+          hs.status = "Healthy"
+          return hs
+    networking.k8s.io/Ingress:
+        health.lua: |
+          hs = {}
+          if obj.status ~= nil then
+            hs.status = "Healthy"
+          end
+          return hs
+  resource.exclusions: |
+    - apiGroups:
+        - cilium.io
+      kinds:
+        - CiliumIdentity
+      clusters:
+        - "*"
+```

@@ -8,7 +8,7 @@ spec:
       app: mkdocs
   ingress:
     - fromCIDRSet:
-        - cidr: 10.10.10.0/24
+        - cidr: 100.10.10.0/24
       toPorts:
         - ports:
             - port: "80"
@@ -16,4 +16,4 @@ spec:
         - cluster
   egress:
     - toCIDRSet:
-        - cidr: 10.10.10.0/24
+        - cidr: 100.10.10.0/24

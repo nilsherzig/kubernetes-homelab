@@ -30,6 +30,8 @@ spec:
             - name: nfs-media
               mountPath: /srv/media-data
             - name: nfs-configs
+              mountPath: /srv/media-configs
+            - name: nfs-configs
               mountPath: /database
               subPath: filebrowser/database
             - name: nfs-configs

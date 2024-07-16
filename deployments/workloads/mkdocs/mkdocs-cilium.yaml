@@ -17,5 +17,10 @@ spec:
       toPorts:
         - ports:
             - port: "80"
+    - fromCIDRSet:
+        - cidr: 0.0.0.0/0
+      toPorts:
+        - ports:
+            - port: "80"
   egress:
     - {}

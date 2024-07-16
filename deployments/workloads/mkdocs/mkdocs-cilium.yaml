@@ -7,15 +7,12 @@ spec:
     matchLabels:
       app: mkdocs
   ingress:
-    - fromEntities:
-        - world
+    - fromCIDRSet:
+        - cidr: 10.10.10.0/24
       toPorts:
         - ports:
             - port: "80"
-    # - fromCIDRSet:
-    #     - cidr: 10.10.10.0/24
-    #   toPorts:
-    #     - ports:
-    #         - port: "80"
+    - fromEntities:
+        - cluster
   egress:
     - {}

@@ -11,6 +11,6 @@ spec:
         - cidr: 10.10.10.0/24
       toPorts:
         - ports:
-            - port: "443"
+            - port: "80"
   egress:
     - {}

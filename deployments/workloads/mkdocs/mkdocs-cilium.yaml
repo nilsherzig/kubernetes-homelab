@@ -12,10 +12,10 @@ spec:
       toPorts:
         - ports:
             - port: "80"
-    - fromCIDRSet:
-        - cidr: 10.10.10.0/24
-      toPorts:
-        - ports:
-            - port: "80"
+    # - fromCIDRSet:
+    #     - cidr: 10.10.10.0/24
+    #   toPorts:
+    #     - ports:
+    #         - port: "80"
   egress:
     - {}

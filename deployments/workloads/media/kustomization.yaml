@@ -1,6 +1,6 @@
 resources:
   - ./filebrowser/
-  - ./jellyfin/
+  # - ./jellyfin/
   - ./jellyseerr/
   - ./prowlarr/
   - ./qbittorrent/

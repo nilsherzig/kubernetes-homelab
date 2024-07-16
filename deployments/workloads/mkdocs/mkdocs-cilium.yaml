@@ -8,17 +8,12 @@ spec:
       app: mkdocs
   ingress:
     - fromCIDRSet:
-        - cidr: 10.244.0.121/32
-      toPorts:
-        - ports:
-            - port: "80"
-    - fromCIDRSet:
         - cidr: 10.10.10.0/24
       toPorts:
         - ports:
-            - port: "80"
-    - fromCIDRSet:
-        - cidr: 0.0.0.0/0
+            - port: "443"
+    - fromEntities:
+        - world
       toPorts:
         - ports:
             - port: "80"

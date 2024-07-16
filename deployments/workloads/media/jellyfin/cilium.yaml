@@ -18,6 +18,8 @@ spec:
       toPorts:
         - ports:
             - port: "8096"
+    - fromEntities:
+        - cluster
   egress:
     - toEndpoints:
         - matchLabels:

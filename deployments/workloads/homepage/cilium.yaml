@@ -1,0 +1,19 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: mkdocs
+spec:
+  endpointSelector:
+    matchLabels:
+      app: mkdocs
+  ingress:
+    - fromCIDRSet:
+        - cidr: 10.10.10.0/24
+      toPorts:
+        - ports:
+            - port: "80"
+    - fromEntities:
+        - cluster
+  egress:
+    - toCIDRSet:
+        - cidr: 10.10.10.0/24

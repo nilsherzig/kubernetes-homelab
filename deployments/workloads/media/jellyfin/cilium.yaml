@@ -7,19 +7,11 @@ spec:
     matchLabels:
       app: jellyfin
   ingress:
-    - fromCIDRSet:
-        - cidr: 10.10.10.0/24
-      toPorts:
-        - ports:
-            - port: "443"
-    - fromEndpoints:
-        - matchLabels:
-            app: jellyseerr
+    - fromEntities:
+        - cluster
       toPorts:
         - ports:
             - port: "8096"
-    - fromEntities:
-        - cluster
   egress:
     - toEndpoints:
         - matchLabels:
@@ -62,8 +54,3 @@ spec:
       toPorts:
         - ports:
             - port: "443"
-    - toServices:
-        - k8sServiceSelector:
-            selector:
-              matchLabels:
-                app: jellyseerr

@@ -1,11 +1,11 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: mkdocs
+  name: homepage
 spec:
   endpointSelector:
     matchLabels:
-      app: mkdocs
+      app: homepage
   ingress:
     - fromEntities:
         - cluster

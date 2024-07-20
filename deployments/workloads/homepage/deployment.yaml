@@ -1,27 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mkdocs-deployment
+  name: homepage-deployment
   labels:
-    app: mkdocs
+    app: homepage
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: mkdocs
+      app: homepage
   template:
     metadata:
       labels:
-        app: mkdocs
+        app: homepage
     spec:
       containers:
-        - name: mkdocs
-          image: nginx:latest
+        - name: homepage
+          image: nilsherzig/homepage:latest
           ports:
             - containerPort: 80
-          volumeMounts:
-            - name: nfs-docs
-              mountPath: /usr/share/nginx/html
           resources:
             limits:
               memory: "128Mi"
@@ -29,9 +26,3 @@ spec:
             requests:
               memory: "64Mi"
               cpu: "250m"
-      volumes:
-        - name: nfs-docs
-          nfs:
-            server: truenas
-            path: /mnt/bigdata/kubernetes/mkdocs
-            readOnly: true

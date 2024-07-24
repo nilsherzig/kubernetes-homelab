@@ -43,6 +43,7 @@ spec:
         app: umami-db
     spec:
       securityContext:
+        runAsUser: 999
         fsGroup: 999
       containers:
         - name: db

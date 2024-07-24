@@ -89,7 +89,7 @@ kind: Deployment
 metadata:
   name: umami
 spec:
-  replicas: 2 # Scaled to 2 instances
+  replicas: 1 # Scaled to 2 instances
   selector:
     matchLabels:
       app: umami

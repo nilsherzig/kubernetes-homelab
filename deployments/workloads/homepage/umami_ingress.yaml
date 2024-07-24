@@ -13,7 +13,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: umami-service
+                name: umami
                 port:
                   number: 80
   tls:

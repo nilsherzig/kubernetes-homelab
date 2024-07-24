@@ -42,6 +42,8 @@ spec:
       labels:
         app: umami-db
     spec:
+      securityContext:
+        fsGroup: 999
       containers:
         - name: db
           image: postgres:15-alpine

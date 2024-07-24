@@ -103,7 +103,7 @@ spec:
           image: ghcr.io/umami-software/umami:postgresql-latest
           env:
             - name: DATABASE_URL
-              value: postgresql://umami:umami@umami-db:5432/umami
+              value: postgresql://umami:umami@homepage-umami-db:5432/umami
             - name: DATABASE_TYPE
               value: postgresql
             - name: APP_SECRET

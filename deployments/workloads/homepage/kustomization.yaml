@@ -1,7 +1,6 @@
 resources:
   - ./cilium.yaml
-  - ./deployment-analytics.yaml
+  - ./analytics.yaml
   - ./deployment.yaml
   - ./ingress.yaml
-  - ./service-analytics.yaml
   - ./service.yaml

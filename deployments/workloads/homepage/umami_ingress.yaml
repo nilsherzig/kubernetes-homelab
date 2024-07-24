@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: umami-tls
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: umami.nilsherzig.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: umami-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - umami.nilsherzig.com
+      secretName: tls-umami-cert

@@ -50,7 +50,7 @@ spec:
           image: postgres:15-alpine
           env:
             - name: POSTGRES_DB
-              value: umami
+              value: umami-db
             - name: POSTGRES_USER
               value: umami
             - name: POSTGRES_PASSWORD

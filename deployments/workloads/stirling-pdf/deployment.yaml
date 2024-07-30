@@ -44,7 +44,17 @@ spec:
               subPath: trainingData
       volumes:
         - name: stirling
-          nfs:
-            server: truenas
-            path: /mnt/bigdata/kubernetes/stirling
-            readOnly: false
+          persistentVolumeClaim:
+            claimName: stirling-data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: stirling-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 5Gi

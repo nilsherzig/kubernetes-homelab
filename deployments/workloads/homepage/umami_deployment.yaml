@@ -15,7 +15,7 @@ kind: Deployment
 metadata:
   name: umami-db
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: umami-db

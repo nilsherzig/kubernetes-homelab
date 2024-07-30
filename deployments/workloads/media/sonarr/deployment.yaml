@@ -5,7 +5,7 @@ metadata:
   labels:
     app: sonarr
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: sonarr
@@ -52,5 +52,5 @@ spec:
         - name: nfs-configs
           nfs:
             server: truenas
-            path: /mnt/bigdata/kubernetes/media/configs
+            path: /mnt/fast/media-configs
             readOnly: false

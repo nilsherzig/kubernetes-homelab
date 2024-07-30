@@ -1,5 +1,13 @@
 machine:
   kubelet:
+    extraMounts:
+      - destination: /var/lib/longhorn
+        type: bind
+        source: /var/lib/longhorn
+        options:
+          - bind
+          - rshared
+          - rw
     extraArgs:
       rotate-server-certificates: true
 cluster:
@@ -8,3 +16,4 @@ cluster:
       name: none
   proxy:
     disabled: true
+# talosctl patch mc --nodes talos-p1,talos-w1,talos-w2 --patch @patches.yaml

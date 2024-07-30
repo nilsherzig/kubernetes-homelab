@@ -27,11 +27,24 @@ spec:
               memory: "500Mi"
               cpu: "500m"
           volumeMounts:
-            - name: fileshare
+            - name: fileshare-data
               mountPath: /opt/app/backend/data
+              subPath: data
       volumes:
-        - name: fileshare
-          nfs:
-            server: truenas
-            path: /mnt/bigdata/kubernetes/fileshare
-            readOnly: false
+        - name: fileshare-data
+          persistentVolumeClaim:
+            claimName: fileshare-data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fileshare-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 50Gi
+---
+

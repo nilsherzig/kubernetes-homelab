@@ -24,9 +24,6 @@ spec:
       labels:
         app: umami-db
     spec:
-      securityContext:
-        runAsUser: 999
-        fsGroup: 999
       containers:
         - name: db
           image: postgres:15-alpine
@@ -42,6 +39,7 @@ spec:
           volumeMounts:
             - name: umami-db-data
               mountPath: /var/lib/postgresql/data
+              subdir: database
           readinessProbe:
             exec:
               command: ["pg_isready", "-U", "umami", "-d", "umami"]

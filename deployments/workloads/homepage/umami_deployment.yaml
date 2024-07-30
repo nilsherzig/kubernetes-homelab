@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: umami-data-pvc
+  name: umami-db
 spec:
   accessModes:
     - ReadWriteOnce
@@ -52,7 +52,7 @@ spec:
       volumes:
         - name: umami-db-data
           persistentVolumeClaim:
-            claimName: umami-nfs-pvc
+            claimName: umami-db
 ---
 apiVersion: v1
 kind: Service

@@ -45,12 +45,24 @@ spec:
       volumes:
         - name: stirling
           persistentVolumeClaim:
-            claimName: stirling-data
+            claimName: stirling-data-many
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: stirling-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: stirling-data-many
 spec:
   accessModes:
     - ReadWriteMany

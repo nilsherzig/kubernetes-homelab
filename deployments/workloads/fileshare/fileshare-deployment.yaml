@@ -5,7 +5,7 @@ metadata:
   labels:
     app: fileshare
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: fileshare
@@ -27,24 +27,40 @@ spec:
               memory: "500Mi"
               cpu: "500m"
           volumeMounts:
-            - name: fileshare-data
-              mountPath: /opt/app/backend/data
-              subPath: data
+            - name: fileshare-configs
+              mountPath: /opt/app/backend/data/pingvin-share.db
+              subPath: data/pingvin-share.db
+            - name: fileshare-uploads
+              mountPath: /opt/app/backend/data/uploads
+              subPath: uploads
       volumes:
-        - name: fileshare-data
+        - name: fileshare-configs
           persistentVolumeClaim:
-            claimName: fileshare-data
+            claimName: fileshare-configs
+        - name: fileshare-uploads
+          persistentVolumeClaim:
+            claimName: fileshare-uploads
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: fileshare-data
+  name: fileshare-configs
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 50Gi
+      storage: 3Gi
 ---
-
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fileshare-uploads
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 300Gi

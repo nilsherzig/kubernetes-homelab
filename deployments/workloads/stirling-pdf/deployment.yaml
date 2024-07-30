@@ -53,7 +53,7 @@ metadata:
   name: stirling-data
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   volumeMode: Filesystem
   resources:
     requests:

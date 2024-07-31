@@ -27,23 +27,12 @@ spec:
               memory: "500Mi"
               cpu: "500m"
           volumeMounts:
-            # - name: fileshare-configs
-            #   mountPath: /opt/app/backend/data/pingvin-share.db
-            #   subPath: data/pingvin-share.db
-            - name: fileshare-configs
-              mountPath: /opt/app/backend/data/test.db
-              subPath: test.db
-            - name: fileshare-uploads
-              mountPath: /opt/app/backend/data/uploads
-              subPath: data/uploads/
+            - name: fileshare
+              mountPath: /opt/app/backend/data/
+              subPath: data/
       volumes:
-        - name: fileshare-configs
+        - name: fileshare
           nfs:
             server: truenas
-            path: /mnt/fast/fileshare-config/
-            readOnly: false
-        - name: fileshare-uploads
-          nfs:
-            server: truenas
-            path: /mnt/bigdata/fileshare-uploads/
+            path: /mnt/bigdata/kubernetes/fileshare/
             readOnly: false

@@ -6,6 +6,9 @@ spec:
   endpointSelector:
     matchLabels:
       app: homepage
-  ingress:
+  # ingress:
+  #   - fromEntities:
+  #       - cluster
+  ingressDeny:
     - fromEntities:
-        - cluster
+        - "world"

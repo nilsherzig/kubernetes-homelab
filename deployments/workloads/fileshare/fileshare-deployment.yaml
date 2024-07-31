@@ -5,7 +5,7 @@ metadata:
   labels:
     app: fileshare
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: fileshare
@@ -32,35 +32,15 @@ spec:
               subPath: data/pingvin-share.db
             - name: fileshare-uploads
               mountPath: /opt/app/backend/data/uploads
-              subPath: uploads
+              subPath: data/uploads/
       volumes:
         - name: fileshare-configs
-          persistentVolumeClaim:
-            claimName: fileshare-configs
+          nfs:
+            server: truenas
+            path: /mnt/fast/fileshare-config/
+            readOnly: false
         - name: fileshare-uploads
-          persistentVolumeClaim:
-            claimName: fileshare-uploads
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: fileshare-configs
-spec:
-  accessModes:
-    - ReadWriteMany
-  volumeMode: Filesystem
-  resources:
-    requests:
-      storage: 3Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: fileshare-uploads
-spec:
-  accessModes:
-    - ReadWriteMany
-  volumeMode: Filesystem
-  resources:
-    requests:
-      storage: 300Gi
+          nfs:
+            server: truenas
+            path: /mnt/bigdata/fileshare-uploads/
+            readOnly: false

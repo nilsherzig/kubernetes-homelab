@@ -9,6 +9,9 @@ spec:
   ingress:
     - fromCIDR:
         - 10.10.10.0/24
+      toPorts:
+        - ports:
+            - port: "5055"
     # - fromEntities:
     #     - cluster
     #   toPorts:

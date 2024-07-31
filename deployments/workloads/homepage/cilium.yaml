@@ -6,6 +6,6 @@ spec:
   endpointSelector:
     matchLabels:
       app: homepage
-  ingress:
-    - fromEntities:
-        - cluster
+  # ingress:
+  #   - fromEntities:
+  #       - cluster

@@ -12,11 +12,11 @@ spec:
       toPorts:
         - ports:
             - port: "5055"
-    # - fromEntities:
-    #     - cluster
-    #   toPorts:
-    #     - ports:
-    #         - port: "5055"
+    - fromEntities:
+        - cluster
+      toPorts:
+        - ports:
+            - port: "5055"
   egress:
     - toEndpoints:
         - matchLabels:

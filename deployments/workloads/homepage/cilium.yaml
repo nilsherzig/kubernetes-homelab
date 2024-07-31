@@ -9,5 +9,7 @@ spec:
   ingress:
     - fromEntities:
         - cluster
+    - fromCIDRSet:
+        - cidr: 0.0.0.0/0
   egress:
     - {}

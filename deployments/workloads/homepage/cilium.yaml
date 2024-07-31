@@ -9,8 +9,3 @@ spec:
   ingress:
     - fromEntities:
         - cluster
-    - fromCIDRSet:
-        - cidr: 192.168.3.0/24
-  ingressDeny:
-    - fromEntities:
-        - "world"

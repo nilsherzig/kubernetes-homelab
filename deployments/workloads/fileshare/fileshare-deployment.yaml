@@ -27,9 +27,9 @@ spec:
               memory: "500Mi"
               cpu: "500m"
           volumeMounts:
-            - name: fileshare-configs
-              mountPath: /opt/app/backend/data/pingvin-share.db
-              subPath: data/pingvin-share.db
+            # - name: fileshare-configs
+            #   mountPath: /opt/app/backend/data/pingvin-share.db
+            #   subPath: data/pingvin-share.db
             - name: fileshare-uploads
               mountPath: /opt/app/backend/data/uploads
               subPath: data/uploads/

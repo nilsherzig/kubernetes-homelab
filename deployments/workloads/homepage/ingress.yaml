@@ -4,6 +4,7 @@ metadata:
   name: homepage-tls
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
+  labels:
     access: public
 spec:
   rules:

@@ -7,11 +7,13 @@ spec:
     matchLabels:
       app: jellyseerr
   ingress:
-    - fromEntities:
-        - cluster
-      toPorts:
-        - ports:
-            - port: "5055"
+    - fromCIDR:
+        - 10.10.10.0/24
+    # - fromEntities:
+    #     - cluster
+    #   toPorts:
+    #     - ports:
+    #         - port: "5055"
   egress:
     - toEndpoints:
         - matchLabels:

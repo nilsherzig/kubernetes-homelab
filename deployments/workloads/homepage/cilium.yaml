@@ -6,9 +6,11 @@ spec:
   endpointSelector:
     matchLabels:
       app: homepage
-  # ingress:
-  #   - fromEntities:
-  #       - cluster
+  ingress:
+    # - fromEntities:
+    #     - cluster
+    - fromCIDRSet:
+        - cidr: 192.168.3.0/24
   ingressDeny:
     - fromEntities:
         - "world"

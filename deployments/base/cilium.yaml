@@ -22,6 +22,8 @@ spec:
   ingress:
     - fromCIDRSet:
         - cidr: 10.10.10.0/24
+    - fromCIDRSet:
+        - cidr: 192.168.3.0/24
 ---
 apiVersion: cilium.io/v2
 kind: CiliumClusterwideNetworkPolicy

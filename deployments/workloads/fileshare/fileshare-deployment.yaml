@@ -32,7 +32,7 @@ spec:
             #   subPath: data/pingvin-share.db
             - name: fileshare-configs
               mountPath: /opt/app/backend/data/test.db
-              subPath: data/test.db
+              subPath: test.db
             - name: fileshare-uploads
               mountPath: /opt/app/backend/data/uploads
               subPath: data/uploads/

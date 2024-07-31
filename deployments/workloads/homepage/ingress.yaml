@@ -4,6 +4,7 @@ metadata:
   name: homepage-tls
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    access: public
 spec:
   rules:
     - host: nilsherzig.com

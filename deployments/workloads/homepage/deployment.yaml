@@ -4,6 +4,7 @@ metadata:
   name: homepage-deployment
   labels:
     app: homepage
+    access: public
 spec:
   replicas: 1
   selector:

@@ -18,6 +18,8 @@ spec:
         - ports:
             - port: "5055"
   egress:
+    - toCIDR:
+        - 10.10.10.0/24
     - toEndpoints:
         - matchLabels:
             app: jellyfin

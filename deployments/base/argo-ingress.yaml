@@ -1,26 +1,23 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: argocd-server
+  name: argo-tls
   namespace: argocd
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - kind: Rule
-      match: Host(`argocd.nilsherzig.com`)
-      priority: 10
-      services:
-        - name: argocd-server
-          port: 80
-    - kind: Rule
-      match: Host(`argocd.nilsherzig.com`) && Headers(`Content-Type`, `application/grpc`)
-      priority: 11
-      services:
-        - name: argocd-server
-          port: 80
-          scheme: h2c
+  rules:
+    - host: argo.nilsherzig.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argo-server
+                port:
+                  number: 80
   tls:
-    secretName: tls-secret
+    - hosts:
+        - argo.nilsherzig.com
+      secretName: tls-argo-cert

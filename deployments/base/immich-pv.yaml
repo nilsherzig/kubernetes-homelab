@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nas-pv-3
+  name: immich-data-pv
 spec:
   capacity:
     storage: 500Gi
@@ -9,45 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: nas
-  mountOptions:
-    - hard
-    - nfsvers=4.1
-  nfs:
-    server: truenas
-    path: /mnt/bigdata/kubernetes/immich
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nas-pv-2
-spec:
-  capacity:
-    storage: 500Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nas
-  mountOptions:
-    - hard
-    - nfsvers=4.1
-  nfs:
-    server: truenas
-    path: /mnt/bigdata/kubernetes/immich
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nas-pv
-spec:
-  capacity:
-    storage: 500Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nas
+  storageClassName: immich-data
   mountOptions:
     - hard
     - nfsvers=4.1
@@ -66,7 +28,7 @@ spec:
   resources:
     requests:
       storage: 400Gi
-  storageClassName: nas
+  storageClassName: immich-data
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -79,7 +41,7 @@ spec:
   resources:
     requests:
       storage: 20Gi
-  storageClassName: nas
+  storageClassName: longhorn
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -92,4 +54,4 @@ spec:
   resources:
     requests:
       storage: 20Gi
-  storageClassName: nas
+  storageClassName: longhorn

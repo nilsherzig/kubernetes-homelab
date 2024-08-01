@@ -12,6 +12,7 @@ helm template \
     --set hubble.ui.enabled=true \
     --set ingressController.default=true \
     --set ingressController.enabled=true \
+    --set ingressController.enforceHttps=true \
     --set ingressController.hostNetwork.enabled=true \
     --set ingressController.hostNetwork.sharedListenerPort="8080" \
     --set ingressController.loadbalancerMode=shared  \

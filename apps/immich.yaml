@@ -8,7 +8,7 @@ spec:
   source:
     chart: immich
     repoURL: https://immich-app.github.io/immich-charts
-    targetRevision: 0.7.0
+    targetRevision: 0.7.1
     helm:
       valuesObject:
         postgresql:

@@ -21,45 +21,22 @@ spec:
         operator: Exists
   ingress:
     - fromCIDRSet:
-        - cidr: 10.10.10.0/24
-    - fromCIDRSet:
         - cidr: 192.168.3.0/24
 ---
-# apiVersion: cilium.io/v2
-# kind: CiliumClusterwideNetworkPolicy
-# metadata:
-#   name: "default-deny"
-# spec:
-#   description: "Block all the traffic (except DNS) by default"
-#   egress:
-#     - toEndpoints:
-#         - matchLabels:
-#             io.kubernetes.pod.namespace: kube-system
-#             k8s-app: kube-dns
-#       toPorts:
-#         - ports:
-#             - port: "53"
-#               protocol: UDP
-#           rules:
-#             dns:
-#               - matchPattern: "*"
-#   endpointSelector:
-#     matchExpressions:
-#       - key: io.kubernetes.pod.namespace
-#         operator: NotIn
-#         values:
-#           - kube-system
-# ---
-apiVersion: cilium.io/v2
+apiVersion: "cilium.io/v2"
 kind: CiliumClusterwideNetworkPolicy
 metadata:
-  name: allow-ingress-egress
+  name: "asd"
 spec:
-  description: "Allow all the egress traffic from reserved ingress identity to any endpoints in the cluster"
+  description: "Allow all the traffic originating from a specific CIDR"
   endpointSelector:
-    matchExpressions:
-      - key: reserved:ingress
-        operator: Exists
+    matchLabels:
+      app: homepage
+  ingress:
+    - fromCIDRSet:
+        # - cidr: 192.168.3.0/24
+        - cidr: 10.10.10.0/24
   egress:
-    - toEntities:
-        - cluster
+    - toCIDRSet:
+        # - cidr: 192.168.3.0/24
+        - cidr: 10.10.10.0/24

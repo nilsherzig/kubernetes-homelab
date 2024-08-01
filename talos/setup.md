@@ -88,4 +88,44 @@ k apply -f ../apps/longhorn.yaml
 
 # deploy homepage
 k apply -f ../apps/homelab-homepage.yaml
+
+```
+
+Argo CD allow auto created cilium items (otherwise Argo will remove them).
+
+```bash
+# open argocd configmap
+kubectl edit cm argocd-cm -n argocd
+```
+
+```yaml
+# add these items
+data:
+  resource.exclusions: |
+    - apiGroups:
+      - cilium.io
+      kinds:
+      - CiliumIdentity
+      clusters:
+      - "*"
+```
+
+## Enable resource consumption stats
+
+## Add longhorn storage nodes 
+
+- 3 x 4 TB storage nodes
+
+## setup firewall rules using cilium  
+
+### default ingress lock down mode
+
+1. relevant files are at [base/cilium.yaml](../deployments/base/cilium.yaml)
+2. debug using the following `hubble` command
+
+```bash
+hubble observe --identity ingress -f
+kubectl -n kube-system exec -ti cilium-j48z7 -- cilium-dbg endpoint list
+kubectl -n kube-system exec -ti cilium-j48z7 -- cilium-dbg endpoint get [endpoint id]
+# you can use -o yaml if you get a json parsing error https://github.com/cilium/cilium/issues/29247
 ```

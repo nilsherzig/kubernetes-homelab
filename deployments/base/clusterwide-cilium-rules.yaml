@@ -9,16 +9,16 @@ spec:
     - fromEntities:
         - cluster
 ---
-# apiVersion: "cilium.io/v2"
-# kind: CiliumClusterwideNetworkPolicy
-# metadata:
-#   name: "allow-cidr"
-# spec:
-#   description: "Allow all the traffic originating from a specific CIDR"
-#   endpointSelector:
-#     matchExpressions:
-#       - key: reserved:ingress
-#         operator: Exists
-#   ingress:
-#     - fromCIDRSet:
-#         - cidr: 192.168.3.0/24
+apiVersion: "cilium.io/v2"
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: "allow-cidr"
+spec:
+  description: "Allow all the traffic originating from a specific CIDR"
+  endpointSelector:
+    matchExpressions:
+      - key: reserved:ingress
+        operator: Exists
+  ingress:
+    - fromCIDRSet:
+        - cidr: 192.168.3.0/24

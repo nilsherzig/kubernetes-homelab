@@ -13,10 +13,8 @@ spec:
         parameters:
           - name: installCRDs
             value: "true"
-      # helm:
-      #   values: |
-      #     preUpgradeChecker:
-      #       jobEnabled: false
+          - name: extraArgs
+            value: "{--enable-gateway-api}"
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager

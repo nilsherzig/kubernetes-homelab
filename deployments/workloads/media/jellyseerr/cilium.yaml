@@ -6,6 +6,9 @@ spec:
   endpointSelector:
     matchLabels:
       app: jellyseerr
+  ingress:
+    - fromCIDRSet:
+        - cidr: "10.10.10.0/24"
   egress:
     - toEndpoints:
         - matchLabels:

@@ -6,9 +6,6 @@ spec:
   endpointSelector:
     matchLabels:
       app: homepage
-  ingress:
-    - fromCIDRSet:
-        - cidr: 10.10.10.0/24
   egress:
     - toEndpoints:
         - matchLabels:

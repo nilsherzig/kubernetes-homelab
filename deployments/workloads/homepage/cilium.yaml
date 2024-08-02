@@ -5,7 +5,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app: homepage
+      k8s:app: homepage
   ingress:
     - fromCIDRSet:
         - cidr: 10.10.10.0/24

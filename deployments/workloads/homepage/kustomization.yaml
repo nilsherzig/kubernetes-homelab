@@ -1,5 +1,5 @@
 resources:
-  # - ./cilium.yaml
+  - ./cilium.yaml
   - ./deployment.yaml
   - ./ingress.yaml
   - ./service.yaml

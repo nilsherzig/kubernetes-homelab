@@ -6,3 +6,4 @@ deployments/overlays/staging/create_wireguard_secret.sh
 talos/_out
 tests/kaniko
 talos/kubeconfig
+talos/cilium.yaml

@@ -19,5 +19,7 @@ spec:
     matchLabels:
       namespace: media
   ingress:
+    # - fromCIDRSet:
+    #     - cidr: "10.10.10.0/24"
     - fromCIDRSet:
-        - cidr: "10.10.10.0/24"
+        - cidr: "192.168.3.0/24"

@@ -33,24 +33,3 @@ spec:
       backendRefs:
         - name: homepage-homepage-service
           port: 80
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: Gateway
-metadata:
-  name: example
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-spec:
-  gatewayClassName: cilium
-  listeners:
-    - name: http
-      hostname: example.nilsherzig.com
-      port: 443
-      protocol: HTTPS
-      allowedRoutes:
-        namespaces:
-          from: All
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: example-com-tls

@@ -12,9 +12,9 @@ spec:
       port: 443
       hostname: "nilsherzig.com"
       tls:
+        mode: Terminate
         certificateRefs:
-          - kind: Secret
-            name: tls-homepage-gateway-cert
+          - name: tls-homepage-gateway-cert
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute

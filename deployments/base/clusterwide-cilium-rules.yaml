@@ -32,7 +32,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      "access": "public"
+      "namespace": "homepage"
   ingress:
     - fromEntities:
         - cluster

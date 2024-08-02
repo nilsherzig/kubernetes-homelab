@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: homepage
-          image: ealen/echo-server:latest
+          image: nilsherzig/homepage:latest
           ports:
             - containerPort: 80
           resources:

@@ -1,29 +1,14 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumClusterwideNetworkPolicy
 metadata:
-  name: "external-lockdown"
+  name: "allow-external-to-label-access-public"
 spec:
-  # endpointSelector: {}
   endpointSelector:
-    matchExpressions:
-      - key: reserved:ingress
-        operator: Exists
+    matchLabels:
+      namespace: homepage
   ingress:
     - fromEntities:
-        - cluster
----
-apiVersion: "cilium.io/v2"
-kind: CiliumClusterwideNetworkPolicy
-metadata:
-  name: "allow-cidr"
-spec:
-  endpointSelector:
-    matchExpressions:
-      - key: reserved:ingress
-        operator: Exists
-  ingress:
-    - fromCIDRSet:
-        - cidr: 192.168.3.0/24
+        - world
 ---
 apiVersion: "cilium.io/v2"
 kind: CiliumClusterwideNetworkPolicy
@@ -32,9 +17,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      namespace: homepage
+      namespace: media
   ingress:
     - fromEntities:
         - cluster
-    - fromEntities:
-        - world

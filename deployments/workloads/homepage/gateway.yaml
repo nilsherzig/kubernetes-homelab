@@ -22,7 +22,7 @@ metadata:
   name: https-app-route-base
 spec:
   parentRefs:
-    - name: tls-gateway
+    - name: homepage-tls-gateway
   hostnames:
     - "nilsherzig.com"
   rules:

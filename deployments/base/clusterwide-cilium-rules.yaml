@@ -26,3 +26,16 @@ spec:
   ingress:
     - fromCIDRSet:
         - cidr: 192.168.3.0/24
+---
+apiVersion: "cilium.io/v2"
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: "allow-external-to-label-access-public"
+spec:
+  description: "Block all the traffic originating from outside of the cluster"
+  endpointSelector:
+    matchLabels:
+      "access": "public"
+  ingress:
+    - fromEntities:
+        - cluster

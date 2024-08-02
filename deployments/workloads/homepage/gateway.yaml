@@ -9,7 +9,7 @@ spec:
   listeners:
     - name: https-1
       protocol: HTTPS
-      port: 9091
+      port: 443
       hostname: "nilsherzig.com"
       tls:
         mode: Terminate

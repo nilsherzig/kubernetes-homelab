@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
         - name: homepage
-          image: nilsherzig/homepage:latest
+          image: hashicorp/http-echo:latest
           ports:
-            - containerPort: 80
+            - containerPort: 5678
           resources:
             limits:
               memory: "128Mi"

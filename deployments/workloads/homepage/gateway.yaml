@@ -41,7 +41,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  gatewayClassName: foo
+  gatewayClassName: cilium
   listeners:
     - name: http
       hostname: example.nilsherzig.com

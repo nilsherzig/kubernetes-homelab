@@ -6,6 +6,18 @@ spec:
   endpointSelector:
     matchLabels:
       app: homepage
-  # ingress:
-  #   - fromEntities:
-  #       - cluster
+  ingress:
+    - fromCIDRSet:
+        - cidr: 10.10.10.0/24
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"

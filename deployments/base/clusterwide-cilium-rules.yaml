@@ -4,7 +4,11 @@ metadata:
   name: "external-lockdown"
 spec:
   description: "Block all the traffic originating from outside of the cluster"
-  endpointSelector: {}
+  # endpointSelector: {}
+  endpointSelector:
+    matchExpressions:
+      - key: reserved:ingress
+        operator: Exists
   ingress:
     - fromEntities:
         - cluster

@@ -3,7 +3,6 @@ kind: CiliumClusterwideNetworkPolicy
 metadata:
   name: "external-lockdown"
 spec:
-  description: "Block all the traffic originating from outside of the cluster"
   # endpointSelector: {}
   endpointSelector:
     matchExpressions:
@@ -18,7 +17,6 @@ kind: CiliumClusterwideNetworkPolicy
 metadata:
   name: "allow-cidr"
 spec:
-  description: "Allow all the traffic originating from a specific CIDR"
   endpointSelector:
     matchExpressions:
       - key: reserved:ingress
@@ -32,10 +30,11 @@ kind: CiliumClusterwideNetworkPolicy
 metadata:
   name: "allow-external-to-label-access-public"
 spec:
-  description: "Block all the traffic originating from outside of the cluster"
   endpointSelector:
     matchLabels:
       "access": "public"
   ingress:
     - fromEntities:
         - cluster
+    - fromEntities:
+        - world

@@ -6,12 +6,6 @@ spec:
   endpointSelector:
     matchLabels:
       app: jellyseerr
-  ingress:
-    - fromEntities:
-        - cluster
-      toPorts:
-        - ports:
-            - port: "5055"
   egress:
     - toEndpoints:
         - matchLabels:

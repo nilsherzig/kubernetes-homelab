@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
         - name: homepage
-          image: hashicorp/http-echo:latest
+          image: ealen/echo-server:latest
           ports:
-            - containerPort: 5678
+            - containerPort: 80
           resources:
             limits:
               memory: "128Mi"

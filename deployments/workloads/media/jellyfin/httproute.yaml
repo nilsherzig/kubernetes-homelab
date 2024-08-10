@@ -14,4 +14,4 @@ spec:
             value: /
       backendRefs:
         - name: jellyfin
-          port: 8080
+          port: 80

@@ -16,3 +16,10 @@ metadata:
   name: homepage
   labels:
     httpRoutes: local
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+  labels:
+    httpRoutes: local

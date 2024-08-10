@@ -7,7 +7,7 @@ spec:
     - name: shared-gateway
       namespace: infra
   hostnames:
-    - "stream.nilsherzig.com"
+    - "stream.dev.nilsherzig.com"
   rules:
     - matches:
         - path:

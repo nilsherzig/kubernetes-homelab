@@ -20,35 +20,13 @@ spec:
         namespaces:
           from: All
     - name: https-listener-argocd # TODO use wildcards for *.dev.nilsherzig.com domains
-      hostname: "argocd.dev.nilsherzig.com"
+      hostname: "*.dev.nilsherzig.com"
       protocol: HTTPS
       port: 8888
       tls:
         mode: Terminate
         certificateRefs:
           - name: argocd-nilsherzig-com
-      allowedRoutes:
-        namespaces:
-          from: All
-    - name: https-listener-hubble
-      hostname: "hubble.dev.nilsherzig.com"
-      protocol: HTTPS
-      port: 8888
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: hubble-nilsherzig-com
-      allowedRoutes:
-        namespaces:
-          from: All
-    - name: https-listener-stream
-      hostname: "stream.nilsherzig.com"
-      protocol: HTTPS
-      port: 9090
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: stream-nilsherzig-com
       allowedRoutes:
         namespaces:
           from: All

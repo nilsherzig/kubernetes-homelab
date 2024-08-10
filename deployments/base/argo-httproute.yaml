@@ -5,7 +5,8 @@ metadata:
   namespace: argocd
 spec:
   parentRefs:
-    - name: infra/shared-gateway
+    - name: shared-gateway
+      namespace: infra
   hostnames:
     - "argocd.nilsherzig.com"
   rules:

@@ -4,7 +4,8 @@ metadata:
   name: homepage-http-route
 spec:
   parentRefs:
-    - name: infra/shared-gateway
+    - name: shared-gateway
+      namespace: infra
   hostnames:
     - "nilsherzig.com"
   rules:

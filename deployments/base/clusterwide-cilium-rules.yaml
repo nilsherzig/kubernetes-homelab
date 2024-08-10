@@ -20,13 +20,13 @@ spec:
       - key: reserved:ingress
         operator: Exists
   ingress:
-    - fromCIDRSet:
-        - cidr: 192.168.3.0/24
-      toPorts:
-        - ports:
-            - port: "8888"
+    # - fromCIDRSet:
+    #     - cidr: 192.168.3.0/24
+    #   toPorts:
+    #     - ports:
+    #         - port: "8888"
     - fromCIDRSet:
         - cidr: 0.0.0.0/0
-      toPorts:
-        - ports:
-            - port: "9090"
+      # toPorts:
+      #   - ports:
+      #       - port: "9090"

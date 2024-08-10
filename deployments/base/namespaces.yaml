@@ -37,3 +37,17 @@ metadata:
   name: kube-system
   labels:
     httpRoutes: local
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: longhorn-system
+  labels:
+    httpRoutes: local
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: immich-system
+  labels:
+    httpRoutes: local

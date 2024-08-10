@@ -18,7 +18,10 @@ spec:
           - name: argocd-dev-nilsherzig-com
       allowedRoutes:
         namespaces:
-          from: All
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: argocd
 
     - name: https-listener-nilsherzig-com
       hostname: "nilsherzig.com"

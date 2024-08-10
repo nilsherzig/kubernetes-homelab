@@ -10,7 +10,7 @@ spec:
       repoURL: https://helm.cilium.io/
       targetRevision: v1.16.0
       helm:
-        values: |
+        valuesObject:
           k8sServiceHost: localhost
           k8sServicePort: 7445
           kubeProxyReplacement: true

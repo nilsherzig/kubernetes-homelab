@@ -9,7 +9,7 @@ spec:
   gatewayClassName: cilium
   listeners:
     - name: https-listener-wildcard-dev-nilsherzig-com # TODO *.dev.nilsherzig.com is only reachable from my local network
-      hostname: "*.dev.nilsherzig.com"
+      hostname: "argocd.dev.nilsherzig.com"
       protocol: HTTPS
       port: 443
       tls:

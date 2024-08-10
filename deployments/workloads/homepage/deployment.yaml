@@ -17,10 +17,10 @@ spec:
     spec:
       containers:
         - name: homepage
-          # image: nilsherzig/homepage:latest
-          image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
+          image: nilsherzig/homepage:latest
+          # image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           resources:
             limits:
               memory: "128Mi"

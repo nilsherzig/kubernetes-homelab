@@ -19,7 +19,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-    - name: https-listener-argocd # TODO use wildcards for *.dev.nilsherzig.com domains
+    - name: https-listener-argocd # TODO *.dev.nilsherzig.com is only reachable from my local network
       hostname: "*.dev.nilsherzig.com"
       protocol: HTTPS
       port: 8888

@@ -22,12 +22,6 @@ spec:
           selector:
             matchLabels:
               kubernetes.io/metadata.name: argocd
-      # allowedRoutes:
-      #   namespaces:
-      #     from: Selector
-      #     selector:
-      #       matchLabels:
-      #         kubernetes.io/metadata.name: argocd
 
     - name: https-listener-nilsherzig-com
       hostname: "nilsherzig.com"
@@ -39,7 +33,7 @@ spec:
           - name: nilsherzig-com
       allowedRoutes:
         namespaces:
-          from: Selector
+          from: All
           selector:
             matchLabels:
               kubernetes.io/metadata.name: homepage

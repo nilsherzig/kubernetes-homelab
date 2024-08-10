@@ -22,7 +22,7 @@ spec:
     - name: https-listener-argocd # TODO use wildcards for *.dev.nilsherzig.com domains
       hostname: "argocd.dev.nilsherzig.com"
       protocol: HTTPS
-      port: 8080
+      port: 8888
       tls:
         mode: Terminate
         certificateRefs:
@@ -33,7 +33,7 @@ spec:
     - name: https-listener-hubble
       hostname: "hubble.dev.nilsherzig.com"
       protocol: HTTPS
-      port: 8080
+      port: 8888
       tls:
         mode: Terminate
         certificateRefs:

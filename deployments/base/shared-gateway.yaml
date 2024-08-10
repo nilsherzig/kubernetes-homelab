@@ -16,6 +16,9 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: nilsherzig-com
+        allowedRoutes:
+          namespaces:
+            from: All
     - name: https-listener-argocd
       hostname: "argocd.nilsherzig.com"
       protocol: HTTPS
@@ -24,6 +27,9 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: argocd-nilsherzig-com
+        allowedRoutes:
+          namespaces:
+            from: All
     - name: https-listener-stream
       hostname: "stream.nilsherzig.com"
       protocol: HTTPS
@@ -32,12 +38,9 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: stream-nilsherzig-com
-        # allowedRoutes:
-        #   namespaces:
-        #     from: Selector
-        #     selector:
-        #       matchLabels:
-        #         shared-gateway-access: "true"
+        allowedRoutes:
+          namespaces:
+            from: All
 ---
 apiVersion: v1
 kind: Namespace

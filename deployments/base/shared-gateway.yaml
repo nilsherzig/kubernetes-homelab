@@ -8,14 +8,14 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    - name: https-listener-wildcard-dev-nilsherzig-com # TODO *.dev.nilsherzig.com is only reachable from my local network
+    - name: https-listener-argocd-dev-nilsherzig-com
       hostname: "argocd.dev.nilsherzig.com"
       protocol: HTTPS
       port: 443
       tls:
         mode: Terminate
         certificateRefs:
-          - name: wildcard-dev-nilsherzig-com
+          - name: argocd-dev-nilsherzig-com
       allowedRoutes:
         namespaces:
           from: All

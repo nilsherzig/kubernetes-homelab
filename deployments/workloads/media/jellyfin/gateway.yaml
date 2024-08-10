@@ -1,43 +1,36 @@
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: tls-gateway
+  name: media-tls-gateway
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   gatewayClassName: cilium
   listeners:
     - name: https-1
-      hostname: "*.nilsherzig.com"
+      hostname: "stream.nilsherzig.com"
       protocol: HTTPS
       port: 9090
       tls:
         mode: Terminate
         certificateRefs:
-          - name: star-nilsherzig-com
-    - name: https-gw-homepage
-      hostname: "nilsherzig.com"
-      protocol: HTTPS
-      port: 9090
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: nilsherzig-com-homepage
+          - name: stream-nilsherzig-com
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: homepage-http-route
+  name: jellyfin-http-route
 spec:
   parentRefs:
-    - name: homepage-tls-gateway
+    - name: media-tls-gateway
   hostnames:
-    - "nilsherzig.com"
+    - "stream.nilsherzig.com"
   rules:
     - matches:
         - path:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: homepage-homepage-service
-          port: 80
+        - name: jellyfin
+          port: 8080

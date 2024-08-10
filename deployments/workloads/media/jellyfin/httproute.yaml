@@ -4,7 +4,7 @@ metadata:
   name: jellyfin-http-route
 spec:
   parentRefs:
-    - name: media-tls-gateway
+    - name: infra/shared-gateway
   hostnames:
     - "stream.nilsherzig.com"
   rules:

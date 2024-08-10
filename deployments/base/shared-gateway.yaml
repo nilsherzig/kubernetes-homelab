@@ -1,0 +1,40 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: shared-gateway
+  namespace: infra
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: https-listener-homepage
+      hostname: "nilsherzig.com"
+      protocol: HTTPS
+      port: 9090
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: nilsherzig-com
+    - name: https-listener-argocd
+      hostname: "argocd.nilsherzig.com"
+      protocol: HTTPS
+      port: 9090
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: argocd-nilsherzig-com
+    - name: https-listener-stream
+      hostname: "stream.nilsherzig.com"
+      protocol: HTTPS
+      port: 9090
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: stream-nilsherzig-com
+        # allowedRoutes:
+        #   namespaces:
+        #     from: Selector
+        #     selector:
+        #       matchLabels:
+        #         shared-gateway-access: "true"

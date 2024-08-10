@@ -1,7 +1,7 @@
 resources:
   - ./cilium.yaml
   - ./deployment.yaml
-  - ./gateway.yaml
+  - ./httproute.yaml
   - ./service.yaml
   - ./umami_deployment.yaml
   - ./umami_ingress.yaml

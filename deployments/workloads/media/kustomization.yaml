@@ -1,6 +1,4 @@
 resources:
-  - ./gateway.yaml
-
   - ./filebrowser/
   - ./jellyfin/
   - ./jellyseerr/

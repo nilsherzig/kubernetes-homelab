@@ -22,7 +22,7 @@ spec:
     - name: https-listener-argocd # TODO *.dev.nilsherzig.com is only reachable from my local network
       hostname: "*.dev.nilsherzig.com"
       protocol: HTTPS
-      port: 8888
+      port: 443
       tls:
         mode: Terminate
         certificateRefs:

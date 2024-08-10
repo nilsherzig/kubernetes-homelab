@@ -20,9 +20,9 @@ spec:
         namespaces:
           from: All
     - name: https-listener-argocd
-      hostname: "argocd.nilsherzig.com"
+      hostname: "argocd.dev.nilsherzig.com"
       protocol: HTTPS
-      port: 9090
+      port: 443
       tls:
         mode: Terminate
         certificateRefs:
@@ -31,9 +31,9 @@ spec:
         namespaces:
           from: All
     - name: https-listener-hubble
-      hostname: "hubble.nilsherzig.com"
+      hostname: "hubble.dev.nilsherzig.com"
       protocol: HTTPS
-      port: 9090
+      port: 443
       tls:
         mode: Terminate
         certificateRefs:

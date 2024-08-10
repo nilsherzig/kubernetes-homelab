@@ -38,3 +38,8 @@ spec:
         #     selector:
         #       matchLabels:
         #         shared-gateway-access: "true"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: infra

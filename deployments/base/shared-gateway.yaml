@@ -8,35 +8,35 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    # - name: https-listener-argocd-dev-nilsherzig-com
-    #   hostname: "argocd.dev.nilsherzig.com"
-    #   protocol: HTTPS
-    #   port: 443
-    #   tls:
-    #     mode: Terminate
-    #     certificateRefs:
-    #       - name: argocd-dev-nilsherzig-com
-    #   allowedRoutes:
-    #     namespaces:
-    #       from: Selector
-    #       selector:
-    #         matchLabels:
-    #           kubernetes.io/metadata.name: argocd
-
-    - name: https-listener-nilsherzig-com
-      hostname: "nilsherzig.com"
+    - name: https-listener-argocd-dev-nilsherzig-com
+      hostname: "argocd.dev.nilsherzig.com"
       protocol: HTTPS
-      port: 9090
+      port: 443
       tls:
         mode: Terminate
         certificateRefs:
-          - name: nilsherzig-com
+          - name: argocd-dev-nilsherzig-com
       allowedRoutes:
         namespaces:
           from: Selector
           selector:
             matchLabels:
-              kubernetes.io/metadata.name: homepage
+              kubernetes.io/metadata.name: argocd
+
+    # - name: https-listener-nilsherzig-com
+    #   hostname: "nilsherzig.com"
+    #   protocol: HTTPS
+    #   port: 9090
+    #   tls:
+    #     mode: Terminate
+    #     certificateRefs:
+    #       - name: nilsherzig-com
+    #   allowedRoutes:
+    #     namespaces:
+    #       from: Selector
+    #       selector:
+    #         matchLabels:
+    #           kubernetes.io/metadata.name: homepage
 ---
 apiVersion: v1
 kind: Namespace

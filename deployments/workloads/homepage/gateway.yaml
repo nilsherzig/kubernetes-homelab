@@ -8,6 +8,7 @@ spec:
   gatewayClassName: cilium
   listeners:
     - name: https-1
+      hostname: "*.nilsherzig.com"
       protocol: HTTPS
       port: 9090
       tls:

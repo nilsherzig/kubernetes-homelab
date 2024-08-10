@@ -7,14 +7,6 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    - name: https-1
-      hostname: "*.nilsherzig.com"
-      protocol: HTTPS
-      port: 9090
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: star-nilsherzig-com
     - name: https-gw-homepage
       hostname: "nilsherzig.com"
       protocol: HTTPS

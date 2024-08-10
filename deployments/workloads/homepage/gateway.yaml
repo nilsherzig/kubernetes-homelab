@@ -57,5 +57,5 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: media-jellyfin-service
+        - name: media-jellyfin
           port: 8080

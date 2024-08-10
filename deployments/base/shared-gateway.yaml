@@ -16,9 +16,13 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: nilsherzig-com
-      # allowedRoutes:
-      #   namespaces:
-      #     from: All
+      allowedRoutes:
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: homepage
+
     - name: https-listener-argocd # TODO *.dev.nilsherzig.com is only reachable from my local network
       hostname: "*.dev.nilsherzig.com"
       protocol: HTTPS

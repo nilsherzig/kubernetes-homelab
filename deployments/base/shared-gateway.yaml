@@ -33,10 +33,10 @@ spec:
           - name: nilsherzig-com
       allowedRoutes:
         namespaces:
-          from: All
-          # selector:
-          #   matchLabels:
-          #     kubernetes.io/metadata.name: homepage
+          from: Selector
+          selector:
+            matchLabels:
+              kubernetes.io/metadata.name: homepage
 ---
 apiVersion: v1
 kind: Namespace

@@ -8,7 +8,19 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    - name: https-listener-homepage
+    - name: https-listener-wildcard-dev-nilsherzig-com # TODO *.dev.nilsherzig.com is only reachable from my local network
+      hostname: "*.dev.nilsherzig.com"
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: wildcard-dev-nilsherzig-com
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    - name: https-listener-nilsherzig-com
       hostname: "nilsherzig.com"
       protocol: HTTPS
       port: 9090
@@ -22,18 +34,6 @@ spec:
           selector:
             matchLabels:
               kubernetes.io/metadata.name: homepage
-
-    - name: https-listener-argocd # TODO *.dev.nilsherzig.com is only reachable from my local network
-      hostname: "*.dev.nilsherzig.com"
-      protocol: HTTPS
-      port: 443
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: wildcard-dev-nilsherzig-com
-      allowedRoutes:
-        namespaces:
-          from: All
 ---
 apiVersion: v1
 kind: Namespace

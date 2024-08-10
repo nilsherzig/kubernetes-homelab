@@ -24,7 +24,7 @@ spec:
               httpRoutes: local
 
     # - name: https-listener-nilsherzig-com
-    #   hostname: "fake.com"
+    #   hostname: "nilsherzig.com"
     #   protocol: HTTPS
     #   port: 9090
     #   tls:

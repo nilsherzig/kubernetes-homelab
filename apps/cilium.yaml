@@ -18,17 +18,17 @@ spec:
             mode: kubernetes
           hubble:
             ui:
-              enable: true
+              enabled: true
             relay:
-              enable: true
+              enabled: true
           gatewayAPI:
-            enable: true
+            enabled: true
             hostNetwork:
-              enable: true
+              enabled: true
           cgroup:
             hostRoot: "/sys/fs/cgroup"
             autoMount:
-              enable: true
+              enabled: true
           bpf:
             hostLegacyRouting: false
           envoy:

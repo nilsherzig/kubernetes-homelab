@@ -30,6 +30,17 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: https-listener-hubble
+      hostname: "hubble.nilsherzig.com"
+      protocol: HTTPS
+      port: 9090
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: hubble-nilsherzig-com
+      allowedRoutes:
+        namespaces:
+          from: All
     - name: https-listener-stream
       hostname: "stream.nilsherzig.com"
       protocol: HTTPS

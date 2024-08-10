@@ -23,3 +23,17 @@ metadata:
   name: argocd
   labels:
     httpRoutes: local
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+  labels:
+    httpRoutes: local
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kube-system
+  labels:
+    httpRoutes: local

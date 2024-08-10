@@ -2,4 +2,4 @@ resources:
   - ./deployment.yaml
   - ./service.yaml
   - ./cilium.yaml
-  - ./ingress.yaml
+  - ./httproute.yaml

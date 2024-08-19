@@ -2,8 +2,9 @@ resources:
   - ./filebrowser/
   - ./jellyfin/
   - ./jellyseerr/
-  - ./prowlarr/
-  - ./qbittorrent/
-  - ./radarr/
-  - ./sonarr/
   - ./openwebui/
+
+  # - ./prowlarr/
+  # - ./qbittorrent/
+  # - ./radarr/
+  # - ./sonarr/
